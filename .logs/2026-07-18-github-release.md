@@ -34,4 +34,13 @@ Create the first public Git repository, release version 0.1.0, and deploy the pl
 
 ## Remote evidence
 
-Remote creation, release, deployment workflow, and live URL verification will be recorded in the release handoff.
+- Created the public repository at `https://github.com/OliverBeerAsia/withering-despots`.
+- Pushed `main` and enabled GitHub Pages with `build_type: workflow` and enforced HTTPS.
+- The first run, `29636336233`, exposed the workflow's pnpm setup order and failed before install.
+- The second run, `29636390292`, reached the build and exposed an undeclared direct `playwright` import.
+- Corrected both clean-run defects and reproduced formatting, linting, type checking, 65 unit tests, 18 content tests, 12 simulation tests, and the production build locally.
+- Run `29636722587` completed both the GitHub build and Pages deployment jobs.
+- The live URL returned HTTP 200 over HTTPS.
+- A headed browser opened the live game at 19:25 with the correct title, Galina's opening line, three choices, and Pause control.
+- Choosing `Read the room first.` advanced the live game to 19:26 and displayed the expected room observation and continuation control.
+- The only browser-console error was a missing optional `favicon.ico`; no game asset or runtime request failed.
