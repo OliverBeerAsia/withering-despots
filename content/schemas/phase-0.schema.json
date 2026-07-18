@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://withering-despots.invalid/schemas/phase-0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "scene", "ui"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "const": "phase-0-placeholder"
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["logicalWidth", "logicalHeight"],
+      "properties": {
+        "logicalWidth": {
+          "const": 1920
+        },
+        "logicalHeight": {
+          "const": 1080
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statusKey"],
+      "properties": {
+        "statusKey": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+        }
+      }
+    }
+  }
+}

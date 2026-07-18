@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://withering-despots.invalid/schemas/graybox-layout.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "logicalStage",
+    "roomMeters",
+    "geometry",
+    "verbs",
+    "anchors",
+    "routes",
+    "hotspots"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "const": "phase-1-graybox" },
+    "logicalStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "horizonY", "subtitleSafeY"],
+      "properties": {
+        "width": { "const": 1920 },
+        "height": { "const": 1080 },
+        "horizonY": { "const": 360 },
+        "subtitleSafeY": { "const": 840 }
+      }
+    },
+    "roomMeters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "depth", "height"],
+      "properties": {
+        "width": { "const": 7.2 },
+        "depth": { "const": 5.8 },
+        "height": { "const": 2.7 }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["polygons"],
+      "properties": {
+        "polygons": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "role", "points"],
+            "properties": {
+              "id": {
+                "enum": [
+                  "rear-wall",
+                  "left-wall",
+                  "right-wall",
+                  "floor-plane",
+                  "service-corridor",
+                  "service-door",
+                  "street-entrance",
+                  "counter-top",
+                  "counter-front"
+                ]
+              },
+              "role": { "enum": ["room", "service", "door", "counter"] },
+              "points": {
+                "type": "array",
+                "minItems": 8,
+                "items": { "type": "number", "minimum": 0, "maximum": 1920 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "verbs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": { "enum": ["observe", "speak", "serve", "tune", "wait"] }
+    },
+    "anchors": {
+      "type": "array",
+      "minItems": 39,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "x", "y"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^anchor-[a-z0-9-]+$" },
+          "kind": {
+            "enum": [
+              "room",
+              "fixture",
+              "door",
+              "prop",
+              "table",
+              "patron",
+              "standing",
+              "seat",
+              "walk"
+            ]
+          },
+          "x": { "type": "number", "minimum": 0, "maximum": 1920 },
+          "y": { "type": "number", "minimum": 0, "maximum": 1080 }
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "fromAnchorId", "toAnchorId", "waypointAnchorIds"],
+        "properties": {
+          "id": {
+            "enum": [
+              "route-bar-to-television",
+              "route-television-to-telephone",
+              "route-television-to-bar",
+              "route-telephone-to-bar"
+            ]
+          },
+          "fromAnchorId": { "type": "string", "pattern": "^anchor-[a-z0-9-]+$" },
+          "toAnchorId": { "type": "string", "pattern": "^anchor-[a-z0-9-]+$" },
+          "waypointAnchorIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "pattern": "^anchor-walk-[a-z0-9-]+$" }
+          }
+        }
+      }
+    },
+    "hotspots": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "anchorId",
+          "label",
+          "supportedVerbs",
+          "x",
+          "y",
+          "width",
+          "height",
+          "spatialOrder"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "anchorId": { "type": "string", "pattern": "^anchor-[a-z0-9-]+$" },
+          "label": { "type": "string", "minLength": 1 },
+          "supportedVerbs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "enum": ["observe", "speak", "serve", "tune", "wait"] }
+          },
+          "x": { "type": "number", "minimum": 0, "maximum": 1920 },
+          "y": { "type": "number", "minimum": 0, "maximum": 1080 },
+          "width": { "type": "number", "exclusiveMinimum": 0, "maximum": 1920 },
+          "height": { "type": "number", "exclusiveMinimum": 0, "maximum": 1080 },
+          "spatialOrder": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

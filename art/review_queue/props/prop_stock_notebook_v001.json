@@ -1,0 +1,21 @@
+{
+  "asset_id": "prop_stock_notebook_v001",
+  "status": "review",
+  "asset_type": "character_prop",
+  "canonical_character": "galina",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/direction/character_cards/galina.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 12, "height": 10 },
+  "anchor": {
+    "id": "base-center",
+    "x": 6,
+    "y": 9,
+    "note": "local sprite-space contact point when laid on a table/counter; also usable as a hand-held prop (Galina's habitual gesture, ART_BIBLE hand library) once a hold anchor is authored per pose."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Per galina.md: soft cream_2 cover, cream_3 lamplit top sheen, soot_0/cream_1 ruled page-edge stripes, soot_1 diagonal rubber band, dog-eared cream_1/cream_0 corner. Palette-clean via check-palette.ts. Inspected at 8x. No HISTORICAL_LEDGER entry yet — flag for historian pass."
+}

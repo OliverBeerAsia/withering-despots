@@ -1,0 +1,226 @@
+id: vertical_slice_1991_08_21
+start_time: "19:15"
+end_condition:
+  any_flags:
+    - slice_epilogue_complete
+clock_policy:
+  unit: minutes
+  advances_only_on_meaningful_actions: true
+  settings_pause_clock: true
+  deterministic_priority_order: true
+
+chapters:
+  - id: chapter_0_last_shift
+    title_key: chapters.last_shift
+    starts_when:
+      time_at_or_after: "19:15"
+    visual_state: early_evening
+    required_beats:
+      - opening_player_background_choice
+      - introduce_five_verbs
+      - arkady_initial_emergency_claim
+      - first_meaningful_silence
+    exits_when:
+      flag_set: event_tunnel_report_complete
+
+  - id: chapter_1_dead_at_tunnel
+    title_key: chapters.dead_at_tunnel
+    starts_when:
+      flag_set: event_tunnel_report_complete
+    visual_state: night_interior
+    required_beats:
+      - tunnel_deaths_recontextualize_army_argument
+      - nikolai_medal_case_appears
+      - attention_window_signal_or_private_exchange
+      - broken_glass_practical_problem
+    exits_when:
+      flag_set: event_troop_withdrawal_complete
+
+  - id: chapter_2_the_rewrite
+    title_key: chapters.the_rewrite
+    starts_when:
+      flag_set: event_troop_withdrawal_complete
+    visual_state: predawn
+    required_beats:
+      - arkady_rewrites_early_position
+      - one_private_truth_or_final_denial
+      - ledger_style_choice
+      - epilogue_assembly
+    exits_when:
+      flag_set: slice_epilogue_complete
+
+events:
+  - id: event_television_uncertain_bulletin
+    kind: broadcast
+    priority: normal
+    window:
+      earliest: "19:28"
+      latest: "19:50"
+    requires:
+      flags_not:
+        - event_television_uncertain_bulletin_complete
+    announce:
+      audio_cue: tv_signal_lifts
+      hotspot: hotspot_television
+    attention:
+      mode: primary-plus-fragment
+      offers:
+        - id: offer_tv_bulletin
+          target: hotspot_television
+          selected_result: direct
+        - id: offer_lev_signal_comment
+          target: patron_lev
+          selected_result: direct
+          unselected_result: fragment
+    on_complete:
+      - set_flag: event_television_uncertain_bulletin_complete
+      - advance_minutes: 3
+
+  - id: event_phone_stock_call
+    kind: telephone
+    priority: normal
+    window:
+      earliest: "20:05"
+      latest: "20:40"
+    requires:
+      flags_not:
+        - event_phone_stock_call_complete
+    announce:
+      audio_cue: phone_ring_periodic
+      hotspot: hotspot_telephone
+    attention:
+      mode: exclusive
+      offers:
+        - id: offer_answer_phone
+          target: hotspot_telephone
+          selected_result: direct
+        - id: offer_arkady_lev_argument
+          target: group_arkady_lev
+          selected_result: direct
+          unselected_result: fragment
+    on_complete:
+      - set_flag: event_phone_stock_call_complete
+      - advance_minutes: 4
+
+  - id: event_tunnel_report
+    kind: broadcast
+    priority: critical
+    window:
+      earliest: "21:00"
+      latest: "22:15"
+    requires:
+      flags_not:
+        - event_tunnel_report_complete
+    announce:
+      audio_cue: room_falls_quiet
+      lighting_cue: tv_cold_peak
+      hotspot: hotspot_television
+    attention:
+      mode: primary-plus-fragment
+      offers:
+        - id: offer_tunnel_report
+          target: hotspot_television
+          selected_result: direct
+        - id: offer_nikolai_first_reaction
+          target: patron_nikolai
+          selected_result: direct
+          unselected_result: fragment
+        - id: offer_galina_answers_door
+          target: hotspot_door
+          selected_result: direct
+          unselected_result: missed
+    on_start:
+      - set_object_state:
+          object: prop_nikolai_medal_case
+          state: on_table_closed
+    on_complete:
+      - set_flag: event_tunnel_report_complete
+      - set_chapter: chapter_1_dead_at_tunnel
+      - adjust_all:
+          agitation: 8
+          public_certainty: -12
+      - advance_minutes: 7
+    historical_ledger_ids:
+      - EVENT-TUNNEL-001
+
+  - id: event_signal_memory_offer
+    kind: memory_offer
+    priority: optional
+    window:
+      earliest: "22:20"
+      latest: "23:40"
+    requires:
+      flags_all:
+        - event_tunnel_report_complete
+      trust_at_least:
+        patron: lev
+        value: 8
+      flags_not:
+        - memory_signal_complete
+    attention:
+      mode: exclusive
+      offers:
+        - id: offer_memory_signal
+          target: patron_lev
+          selected_result: direct
+        - id: offer_arkady_private_wallet
+          target: patron_arkady
+          selected_result: direct
+          unselected_result: missed
+    on_complete:
+      - set_flag: event_signal_memory_offer_complete
+
+  - id: event_troop_withdrawal
+    kind: radio
+    priority: critical
+    window:
+      earliest: "00:10"
+      latest: "01:15"
+    requires:
+      flags_all:
+        - event_tunnel_report_complete
+      flags_not:
+        - event_troop_withdrawal_complete
+    announce:
+      audio_cue: radio_station_clears
+      hotspot: hotspot_radio
+    attention:
+      mode: primary-plus-fragment
+      offers:
+        - id: offer_withdrawal_report
+          target: hotspot_radio
+          selected_result: direct
+        - id: offer_arkady_card_request
+          target: patron_arkady
+          selected_result: direct
+          unselected_result: fragment
+    on_complete:
+      - set_flag: event_troop_withdrawal_complete
+      - set_chapter: chapter_2_the_rewrite
+      - change_lighting: predawn
+      - adjust_all:
+          public_certainty: -25
+      - advance_minutes: 5
+    historical_ledger_ids:
+      - EVENT-WITHDRAWAL-001
+
+  - id: event_dawn_ledger
+    kind: chapter_transition
+    priority: critical
+    window:
+      earliest: "02:00"
+      latest: "03:30"
+    requires:
+      flags_all:
+        - event_troop_withdrawal_complete
+      flags_not:
+        - slice_epilogue_complete
+    on_start:
+      - lock_free_roam: true
+      - change_lighting: dawn_cleanup
+    sequence:
+      - node: galina_opening_time
+      - node: sasha_ledger_choice
+      - assemble_epilogue: vertical_slice
+    on_complete:
+      - set_flag: slice_epilogue_complete

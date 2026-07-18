@@ -1,0 +1,111 @@
+id: arkady
+name_key: characters.arkady.full_name
+short_name_key: characters.arkady.short_name
+age: 72
+pronouns: he_him
+role_key: characters.arkady.former_role
+historical_status: fictional_composite
+
+narrative:
+  public_belief: institutions_prevent_chaos
+  private_fear: title_was_the_basis_of_identity
+  cherished_achievement: coordinated_housing_and_heating_during_hard_winter
+  compromised_action: blocked_lev_promotion_after_reliability_warning
+  contradiction_arc:
+    early_claim: claim_arkady_emergency_may_be_necessary
+    late_claim: claim_arkady_opposed_coup_from_start
+  trust_reveal: arkady_brought_party_card_for_either_display_or_destruction
+  prohibited_reduction:
+    - must_not_be_only_a_party_apparatchik_caricature
+    - must_retain_one_concrete_public_good_he_helped_deliver
+    - must_not_receive_automatic_absolution_for_procedural_language
+
+visual:
+  design_status: draft_requires_historical_review
+  height_cm: 176
+  build: narrow_shoulders_slight_abdominal_softness
+  posture: forward_head_with_deliberately_formal_spine
+  silhouette_feature: long_neck_and_narrow_preserved_suit
+  face:
+    shape: long_oval_tapering_to_small_square_chin
+    brow: level_heavy_inner_brow_not_scowling
+    eyes: small_deep_set_evenly_spaced
+    nose: long_straight_bridge_with_soft_bulb_tip
+    ears: slightly_prominent_close_to_head
+    hair: high_receding_hairline_thin_gray_combed_back
+    facial_hair: none
+    eyewear: none
+    prohibited_changes:
+      - no_bald_head
+      - no_round_face
+      - no_heavy_jowls
+      - no_villainous_eyebrow_arch
+  clothing:
+    outer_layer: worn_but_carefully_brushed_single_breasted_suit_jacket
+    underlayer: pale_shirt_with_conservative_tie
+    trousers: matching_high_waisted_trousers
+    shoes: dark_plain_lace_up_shoes
+    palette:
+      jacket: "#4B514B"
+      shirt: "#D8D1BE"
+      tie: "#6B4138"
+      shoes: "#272722"
+    prohibited_changes:
+      - no_medals
+      - no_uniform
+      - no_fedora
+      - no_luxury_watch
+      - no_modern_slim_fit
+    ledger_ids:
+      - CLOTH-ARK-001
+      - CLOTH-ARK-002
+  habitual_gesture: squares_documents_to_table_edge
+  signature_prop: prop_arkady_document_wallet
+  game_height_px_at_anchor: 405
+  canonical_master: art/characters/arkady/char_arkady_master_3q_v001.png
+  seat_template: art/blockout/seat_template_table_a.svg
+
+initial_state:
+  present: true
+  seat_anchor: seat_table_a_near
+  trust: 0
+  agitation: 14
+  intoxication: 3
+  public_certainty: 82
+  private_pressure: 18
+  pose_id: char_arkady_pose_seated_listen
+  expression_id: neutral_formal
+  held_prop_id: prop_arkady_document_wallet
+  topics_open:
+    - constitutional_order
+    - emergency_committee
+  topics_closed:
+    - lev_promotion
+    - party_card
+  relationships:
+    lev: -20
+    nikolai: 8
+    gennady: 12
+    galina: 5
+    sasha: 0
+
+writing:
+  speech_register: complete_procedural_sentences
+  verbal_habits:
+    - corrects_imprecise_terms
+    - substitutes_institutional_nouns_for_personal_responsibility
+    - avoids_first_person_when_describing_harm
+  never_use:
+    - generic_comrade_every_sentence
+    - long_textbook_exposition
+    - moustache_twirl_confession
+    - western_political_science_vocabulary_without_context
+  voice_status: text_only_vertical_slice
+
+review:
+  historical_ledger_ids:
+    - EVENT-001
+  cultural_review_required: true
+  native_russian_dialogue_review_required: true
+  art_identity_gate: not_started
+  narrative_gate: draft

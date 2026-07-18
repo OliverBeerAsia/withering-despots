@@ -1,0 +1,38 @@
+{
+  "asset_id": "char_nikolai_sheet_v001",
+  "status": "review",
+  "canonical_character": "nikolai",
+  "source_prompt": "art/source/char/nikolai.ts",
+  "reference_assets": [
+    "art/direction/character_cards/nikolai.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md",
+    "art/source/char/arkady.ts"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 88,
+    "head_px": 16,
+    "shoulders_px": 26,
+    "seated_crown_to_floor_px": 67,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "v001: pilot template (arkady.ts) applied to the nikolai card. Widest shoulders of the cast (26px, half-width 11-13 vs arkady's 8) rendered as a rectangular monolith with minimal waist taper; head sits directly in the shoulder mass with NO neck indent (a 2-3px collar sliver only, vs the visible neck column on the other packages). Parade-rigid: all seated poses tie the head's horizontal offset to the SAME shift value as the torso's own lean (no independent head-only easing) per card 'the whole torso turns'; lean range also narrowed (-2/+1 vs arkady's -3/+2) since he barely turns at the table. Both seated legs given a genuine 1px gap between shins (both feet planted flat and square, not a single merged leg block) after an initial render merged them — fixed by separating far-leg knee/foot x from the near leg. Head is a hand-authored 14x16 ASCII map: full iron-gray hair (soot_4/soot_3, no bald patch), straight 1px horizontal brow bar, broad flattened-bridge nose rendered as a flesh_1 block against the flesh_0-dominant cheek (card: largest flesh_0 coverage of the cast), single-pixel red_0 capillary flecks on cheek and nose base (kept subtle after an initial pass read as a wound-like stripe and was corrected), trimmed straight soot_3 moustache no wider than the mouth, small close-set ear. Jacket stays buttoned in every pose in this package (closure line full-length, 1px pull-fold at the strained middle button); the scripted mid-night-break open-collar state is out of scope for this static set. Medal case and tea glass are NOT drawn into the character (per spec section 4 they are anchored table props, matching the card's own 'never opened on screen' / holder note). Signature pose is a distinct standing variant: heels together, arms straight at the seams (no elbow bend), chin raised 1px — 'at attention facing the TV'. Palette-clean via check-palette.ts on all 11 PNGs (9 poses + sheet + silhouette); inspected at 8x/16x including a dedicated head crop."
+}

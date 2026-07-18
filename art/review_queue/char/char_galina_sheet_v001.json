@@ -1,0 +1,43 @@
+{
+  "asset_id": "char_galina_sheet_v001",
+  "status": "review",
+  "canonical_character": "galina",
+  "source_prompt": "art/source/char/galina.ts",
+  "reference_assets": [
+    "art/direction/character_cards/galina.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md",
+    "art/source/char/arkady.ts"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 82,
+    "head_px": 14,
+    "shoulders_px": 20,
+    "seated_crown_to_floor_px": 62,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "v001 direct pixel authoring. Head map widened to 13px (vs the 11px arkady template) to give the high tight bun clearance to bulge past the skull silhouette — dominant identity feature per card. Skin planes: flesh_1 dominant (unlike arkady's inverted flesh_0-dominant palette), flesh_2 lamplit strip on forehead/cheekbone, flesh_0 restrained per card. Pencil-behind-ear is baked into HEAD_BASE as a permanent identity pixel (always visible, not a per-pose stamp) after an early revision floated it outside the head silhouette. Apron redrawn to taper with the torso (was a flat rectangular slab in the first pass). Standing-pose legs corrected from full-length dress/trouser color to dress-hem-to-knee + bare shin + shoe block, matching the seated leg treatment (first pass incorrectly read as trousers). Signature pose (arms folded high, pencil hand tapping the opposite elbow) sweeps the near arm shoulder->elbow->across the chest; draw order fixed so the apron is painted before the near-arm layer, not after, so the fold is not overpainted. Cardigan drape included as a same-sheet exhausted-pose variant per card `Prohibited changes` note (appears only after midnight); other 8 poses have no cardigan. Palette-clean via check-palette.ts on every PNG; inspected at 8x sheet, 16x head crop, and 10x signature/exhausted crops.",
+  "self_critique": [
+    "Bun reads as a distinct round mass in silhouette but is built from stair-stepped 1px rows at this scale — acceptable pixel-art rounding, flagged for a possible future smoothing pass if reviewers want a cleaner curve.",
+    "Signature-pose folded arms read as a visible diagonal skin band across the chest but are subtle at native 48x96 scale (same abstraction level as arkady's raised-finger signature); a stronger read would need widening the frame, which is out of scope (locked 48x96 frame).",
+    "Six-silhouette check run against the only other completed character in the project (arkady) — gennady/lev/nikolai packages do not yet exist in review_queue to composite against; galina's bun+folded-block silhouette is clearly distinct from arkady's narrow vertical pencil-stroke silhouette."
+  ]
+}

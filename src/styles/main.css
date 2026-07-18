@@ -1,0 +1,1143 @@
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("/fonts/pixelify-sans/PixelifySans-Variable.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("/fonts/press-start-2p/PressStart2P-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color: #f3ede1;
+  background: #0b0e10;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  /* Pixelify Sans variable TTF ships a broken fi/ffi ligature glyph ("first" ->
+     "Arst"); pixel fonts need no ligatures, so disable them everywhere. */
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0;
+
+  /* art/direction/ui_style_guide.md tokens (ids reference art/palette/wd-palette-v1.json) */
+  --paper: #d8c69d; /* cream_3  panel background */
+  --paper-mid: #b2a17c; /* cream_2  aged panel areas, disabled bg, nameplate */
+  --ruling: #8c7d5f; /* cream_1  ledger rule lines */
+  --paper-dk: #665a45; /* cream_0  panel edge shade, pressed bg */
+  --ink: #131114; /* soot_0   text, borders */
+  --ink-soft: #3d383b; /* soot_2   secondary text, meta text */
+  --stamp: #83392b; /* red_1    stamp/alert accent, active nameplate */
+  --stamp-dk: #56271f; /* red_0    stamp shadow */
+  --signal: #3d7f8c; /* cyan_1   focus ring, link/verb accent */
+  --signal-dim: #1e4652; /* cyan_0   focus ring shadow, visited/quiet accent */
+  --brass: #b47c31; /* amber_2  timer, warm emphasis (HUD clock) */
+  --shadow: #262227; /* soot_1   print-offset shadow color */
+
+  /* Terminus (style guide's primary body candidate) could not be vendored offline -
+     it isn't distributed as a Google Fonts TTF. Pixelify Sans (candidate 3, genuine
+     Cyrillic coverage verified via fontTools cmap inspection) is used as body/UI font
+     per the guide's own fallback rule. Press Start 2P (candidate 2, Cyrillic subset
+     verified) is used for headers/nameplates/HUD clock only, never body text. */
+  --font-ui: "Pixelify Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Press Start 2P", "Pixelify Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-system:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+.app-shell {
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  background: #080a0c;
+}
+
+.stage-viewport {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  place-items: center;
+}
+
+.stage {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  max-height: 100vh;
+  overflow: hidden;
+  background: #171b1e;
+}
+
+.stage canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Pixel-art route: JS sizes the stage to an exact integer multiple of 640x360;
+   the browser upscale of the native canvas must stay nearest-neighbor. */
+.stage--pixel {
+  width: auto;
+  max-height: none;
+  aspect-ratio: auto;
+}
+
+.stage--pixel canvas {
+  image-rendering: pixelated;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.semantic-overlay {
+  --panel: var(--paper);
+  --panel-strong: var(--paper);
+  --line: var(--ink);
+  --cream: var(--ink);
+  --font-eyebrow: clamp(0.62rem, 0.82vw, 0.82rem);
+  --font-objective: clamp(0.9rem, 1.25vw, 1.3rem);
+  --font-facts: clamp(0.68rem, 0.82vw, 0.86rem);
+  --font-hotspot: clamp(0.68rem, 0.9vw, 0.92rem);
+  --font-fixture: clamp(0.72rem, 0.95vw, 1rem);
+  --font-heading: clamp(0.95rem, 1.35vw, 1.35rem);
+  --font-body: clamp(0.75rem, 0.96vw, 1rem);
+  --font-help: clamp(0.62rem, 0.78vw, 0.82rem);
+  --font-debug: clamp(0.62rem, 0.75vw, 0.78rem);
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  color: var(--cream);
+  font-family: var(--font-ui);
+  pointer-events: none;
+}
+
+.semantic-overlay.large-text {
+  font-size: 150%;
+  font-family: var(--font-system);
+  --font-eyebrow: clamp(0.93rem, 1.23vw, 1.23rem);
+  --font-objective: clamp(1.35rem, 1.875vw, 1.95rem);
+  --font-facts: clamp(1.02rem, 1.23vw, 1.29rem);
+  --font-hotspot: clamp(1.02rem, 1.35vw, 1.38rem);
+  --font-fixture: clamp(1.08rem, 1.425vw, 1.5rem);
+  --font-heading: clamp(1.425rem, 2.025vw, 2.025rem);
+  --font-body: clamp(1.125rem, 1.44vw, 1.5rem);
+  --font-help: clamp(0.93rem, 1.17vw, 1.23rem);
+  --font-debug: clamp(0.93rem, 1.125vw, 1.17rem);
+}
+
+.semantic-overlay.high-contrast,
+.narrative-overlay.high-contrast {
+  --paper: #fff;
+  --paper-mid: #fff;
+  --paper-dk: #ccc;
+  --ruling: #000;
+  --ink: #000;
+  --ink-soft: #000;
+  --stamp: #c00;
+  --stamp-dk: #600;
+  --signal: #0057ff;
+  --signal-dim: #001a4d;
+  --brass: #8a5a00;
+  --shadow: #000;
+}
+
+/* font-family is inherited from .semantic-overlay.large-text / .narrative-overlay.large-text,
+   but the headers/nameplate/HUD-clock elements below set --font-head directly, which (being a
+   specified value on the element itself) always wins over an inherited value. Re-assert the
+   system-sans fallback explicitly so large-text mode never renders the display pixel font. */
+.large-text .hud-eyebrow,
+.large-text .choice-sheet h2,
+.large-text .completion-summary h2,
+.large-text .narrative-chapter,
+.large-text .narrative-clock,
+.large-text .narrative-speaker,
+.large-text .narrative-summary h2,
+.large-text .pause-dialog h2,
+.large-text .narrative-settings-group legend {
+  font-family: var(--font-system);
+}
+
+.graybox-hud {
+  position: absolute;
+  z-index: 5;
+  top: clamp(0.6rem, 1.3vw, 1.4rem);
+  left: clamp(0.6rem, 1.3vw, 1.4rem);
+  width: min(28rem, 48%);
+  padding: clamp(0.55rem, 1vw, 0.9rem) clamp(0.7rem, 1.2vw, 1.1rem);
+  border: 2px solid var(--line);
+  background: var(--panel);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+}
+
+.hud-eyebrow,
+.hud-objective {
+  margin: 0;
+}
+
+.hud-eyebrow {
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-size: var(--font-eyebrow);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hud-objective {
+  margin-top: 0.25rem;
+  font-size: var(--font-objective);
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.hud-facts {
+  display: flex;
+  gap: 0.5rem 0.8rem;
+  margin: 0.4rem 0 0;
+  font-size: var(--font-facts);
+}
+
+.hud-facts dt {
+  color: var(--ink-soft);
+}
+
+.hud-facts dd {
+  margin: 0;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+}
+
+.hotspot-layer,
+.step-controls {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hotspot-layer > div {
+  position: absolute;
+  min-width: 44px;
+  min-height: 44px;
+  pointer-events: none;
+}
+
+.hotspot-button {
+  position: absolute;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hotspot-layer > div > .hotspot-button {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hotspot-button:hover {
+  border-color: var(--signal);
+}
+
+.hotspot-button:focus-visible,
+.choice-button:focus-visible,
+.utility-button:focus-visible,
+.debug-panel summary:focus-visible,
+.pause-dialog input:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--signal-dim);
+}
+
+.hotspot-label {
+  position: absolute;
+  left: 50%;
+  bottom: 0.6rem;
+  width: max-content;
+  max-width: min(18rem, 90vw);
+  padding: 0.35rem 0.55rem;
+  border: 2px solid var(--line);
+  background: var(--panel-strong);
+  color: var(--cream);
+  font-size: var(--font-hotspot);
+  font-weight: 750;
+  line-height: 1.2;
+  opacity: 0;
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  transform: translate(-50%, calc(100% + 0.4rem));
+}
+
+.hotspot-button:hover .hotspot-label,
+.hotspot-button:focus-visible .hotspot-label {
+  opacity: 1;
+}
+
+.fixture-hotspot {
+  display: grid;
+  place-items: center;
+  padding: 0.45rem;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  font-size: var(--font-fixture);
+  font-weight: 750;
+}
+
+.choice-sheet,
+.completion-summary {
+  position: absolute;
+  z-index: 6;
+  bottom: calc((1080 - 840) / 1080 * 100%);
+  left: 50%;
+  width: min(44rem, calc(100% - clamp(2rem, 8vw, 9rem)));
+  max-height: 42%;
+  padding: clamp(0.65rem, 1.2vw, 1.15rem);
+  overflow: auto;
+  border: 2px solid var(--line);
+  background: var(--panel-strong);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  pointer-events: auto;
+  transform: translateX(-50%);
+}
+
+.choice-sheet h2,
+.completion-summary h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-size: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.completion-summary {
+  background-image:
+    linear-gradient(
+      to right,
+      transparent calc(1.1em - 2px),
+      var(--stamp-dk) calc(1.1em - 2px),
+      var(--stamp-dk) 1.1em,
+      transparent 1.1em
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.6em - 1px),
+      var(--ruling) calc(1.6em - 1px),
+      var(--ruling) 1.6em
+    );
+  background-position: 0 3.2em;
+}
+
+.choice-description,
+.completion-summary p {
+  max-width: 65ch;
+  margin: 0.35rem 0 0;
+  font-size: var(--font-body);
+  line-height: 1.35;
+}
+
+.choice-buttons,
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.choice-button,
+.utility-button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.55rem 0.8rem;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: var(--cream);
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  transition:
+    background-color 60ms steps(2),
+    color 60ms steps(2);
+}
+
+.choice-button:hover,
+.utility-button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.choice-button:active,
+.utility-button:active {
+  background: var(--paper-dk);
+  color: var(--cream);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  transform: translate(1px, 1px);
+}
+
+.choice-button:disabled,
+.utility-button:disabled {
+  border-color: var(--ink-soft);
+  background: var(--paper-mid);
+  color: var(--ink-soft);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  cursor: not-allowed;
+}
+
+.choice-button:disabled:hover,
+.utility-button:disabled:hover {
+  background: var(--paper-mid);
+  color: var(--ink-soft);
+}
+
+.attention-hotspot {
+  position: absolute;
+  min-width: 44px;
+  min-height: 44px;
+  border: 3px solid var(--signal);
+  background: transparent;
+}
+
+.attention-note {
+  position: absolute;
+  z-index: 6;
+  bottom: calc((1080 - 840) / 1080 * 100%);
+  left: 50%;
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid var(--line);
+  background: var(--panel-strong);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  color: var(--cream);
+  font-weight: 750;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.utility-controls {
+  position: absolute;
+  z-index: 8;
+  top: clamp(0.6rem, 1.3vw, 1.4rem);
+  right: clamp(0.6rem, 1.3vw, 1.4rem);
+  pointer-events: auto;
+}
+
+.utility-button {
+  background: var(--panel-strong);
+}
+
+.keyboard-help {
+  position: absolute;
+  z-index: 4;
+  right: clamp(0.6rem, 1.3vw, 1.4rem);
+  bottom: clamp(0.6rem, 1.3vw, 1.4rem);
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  color: var(--ink-soft);
+  font-size: var(--font-help);
+  line-height: 1.25;
+}
+
+.debug-panel {
+  position: absolute;
+  z-index: 9;
+  top: clamp(4rem, 8vw, 6.5rem);
+  right: clamp(0.6rem, 1.3vw, 1.4rem);
+  width: min(30rem, 43%);
+  max-height: 62%;
+  overflow: auto;
+  border: 2px solid var(--signal);
+  background: var(--ink);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  pointer-events: auto;
+}
+
+.debug-panel summary {
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  color: var(--signal);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.debug-panel:not([open]) {
+  width: auto;
+}
+
+.debug-fields {
+  display: grid;
+  grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr);
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+  padding: 0 0.8rem 0.9rem;
+  font-size: var(--font-debug);
+  line-height: 1.35;
+}
+
+.debug-fields dt {
+  color: var(--signal);
+  font-weight: 750;
+}
+
+.debug-fields dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--paper);
+  overflow-wrap: anywhere;
+}
+
+.pause-dialog {
+  width: min(30rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  padding: clamp(1rem, 2vw, 1.6rem);
+  overflow: auto;
+  border: 2px solid var(--ink, #131114);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  pointer-events: auto;
+}
+
+.pause-dialog::backdrop {
+  background: rgb(38 34 39 / 60%);
+}
+
+.pause-dialog h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 400;
+}
+
+.pause-dialog p {
+  line-height: 1.45;
+}
+
+.settings-controls {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.settings-controls label {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  min-height: 44px;
+}
+
+.settings-controls input {
+  width: 1.35rem;
+  height: 1.35rem;
+  accent-color: var(--signal);
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  scroll-behavior: auto !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+@media (max-width: 800px), (max-height: 520px) {
+  .graybox-hud {
+    width: min(24rem, 58%);
+    padding: 0.45rem 0.6rem;
+  }
+
+  .choice-sheet,
+  .completion-summary {
+    width: calc(100% - 2rem);
+    max-height: 48%;
+  }
+
+  .debug-panel {
+    width: min(34rem, calc(100% - 2rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Narrative sample interface */
+
+.narrative-overlay {
+  --narrative-panel: var(--paper);
+  --narrative-line: var(--ink);
+  --narrative-copy: var(--ink);
+  --narrative-muted: var(--ink-soft);
+  font-family: var(--font-ui);
+}
+
+.narrative-overlay.large-text {
+  font-size: 150%;
+  font-family: var(--font-system);
+}
+
+.narrative-render-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-caption {
+  position: absolute;
+  z-index: 6;
+  top: clamp(4rem, 8vw, 5.5rem);
+  left: 50%;
+  width: max-content;
+  max-width: min(78%, 34rem);
+  margin: 0;
+  padding: 0.4rem 0.65rem;
+  translate: -50% 0;
+  border: 1px solid var(--ink-soft);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: clamp(0.7rem, 1.1vw, 0.86rem);
+  line-height: 1.25;
+  text-align: center;
+  pointer-events: none;
+}
+
+.ambient-caption[hidden] {
+  display: none;
+}
+
+.narrative-hud {
+  position: absolute;
+  z-index: 5;
+  top: clamp(0.6rem, 1.3vw, 1.4rem);
+  left: clamp(0.6rem, 1.3vw, 1.4rem);
+  display: flex;
+  width: min(30rem, 52%);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.55rem, 1vw, 0.9rem) clamp(0.7rem, 1.2vw, 1.1rem);
+  border: 2px solid var(--narrative-line);
+  background: var(--narrative-panel);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+}
+
+.narrative-chapter,
+.narrative-clock {
+  margin: 0;
+}
+
+.narrative-chapter {
+  color: var(--narrative-copy);
+  font-family: var(--font-head);
+  font-size: 0.78em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.narrative-clock {
+  flex: none;
+  color: var(--brass);
+  font-family: var(--font-head);
+  font-size: 0.78em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+.narrative-utility {
+  position: absolute;
+  z-index: 8;
+  top: clamp(0.6rem, 1.3vw, 1.4rem);
+  right: clamp(0.6rem, 1.3vw, 1.4rem);
+  pointer-events: auto;
+}
+
+.narrative-dialogue,
+.narrative-summary {
+  position: absolute;
+  z-index: 7;
+  right: clamp(1rem, 7vw, 8rem);
+  bottom: calc((1080 - 840) / 1080 * 100%);
+  left: clamp(1rem, 7vw, 8rem);
+  max-height: 40%;
+  padding: clamp(0.55rem, 0.95vw, 0.85rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 2px solid var(--narrative-line);
+  background: var(--narrative-panel);
+  color: var(--narrative-copy);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  pointer-events: auto;
+  scrollbar-gutter: stable;
+}
+
+/* When the panel must scroll (short viewports), the scrollbar is the visible
+   affordance, a chunky always-on bar in the pixel-UI idiom. Styling
+   ::-webkit-scrollbar forces classic (non-overlay) always-visible bars in
+   Chromium; the standard scrollbar-width/color props are deliberately NOT set,
+   because setting them makes Chromium ignore this custom styling. */
+
+.narrative-dialogue::-webkit-scrollbar,
+.narrative-summary::-webkit-scrollbar {
+  width: 14px;
+}
+
+.narrative-dialogue::-webkit-scrollbar-track,
+.narrative-summary::-webkit-scrollbar-track {
+  background: var(--paper-dk);
+  border-left: 2px solid var(--narrative-line);
+}
+
+/* Cyan (the UI's focus/interactive accent) so the bar reads unmistakably as a
+   "there is more below" affordance, not decoration. */
+.narrative-dialogue::-webkit-scrollbar-thumb,
+.narrative-summary::-webkit-scrollbar-thumb {
+  background: var(--signal);
+  border: 2px solid var(--narrative-line);
+}
+
+.narrative-summary {
+  background-image:
+    linear-gradient(
+      to right,
+      transparent calc(1.25em - 2px),
+      var(--stamp-dk) calc(1.25em - 2px),
+      var(--stamp-dk) 1.25em,
+      transparent 1.25em
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.6em - 1px),
+      var(--ruling) calc(1.6em - 1px),
+      var(--ruling) 1.6em
+    );
+  background-position: 0 3.6em;
+}
+
+.narrative-speaker,
+.narrative-summary h2 {
+  margin: 0;
+  color: var(--narrative-copy);
+  font-family: var(--font-head);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.narrative-speaker {
+  display: inline-block;
+  /* Pulled flush to the panel's own top-left border (an ancestor with
+     overflow-y: auto clips anything positioned above the padding edge, so the
+     tab sits ON the border rather than floating above it). */
+  margin: calc(-1 * clamp(0.55rem, 0.95vw, 0.85rem)) 0 0.45rem
+    calc(-1 * clamp(0.55rem, 0.95vw, 0.85rem));
+  padding: 0.3em 0.7em;
+  border: 2px solid var(--narrative-line);
+  background: var(--paper-mid);
+  box-shadow: inset -1px -1px 0 0 var(--paper-dk);
+  color: var(--ink);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 var(--paper-dk);
+  letter-spacing: 1px;
+}
+
+.narrative-line {
+  max-width: 72ch;
+  margin: 0.4rem 0 0;
+  overflow-wrap: anywhere;
+  font-size: 1em;
+  line-height: 1.45;
+}
+
+.narrative-choice-list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Second-beat reveal: choices/offers step in after the spoken line lands. A
+   chunky stepped fade keeps the pixel-art idiom (no smooth slides). Disabled
+   under reduced motion by the global rules above, where items simply appear. */
+@keyframes narrative-reveal-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.narrative-reveal > li,
+.narrative-reveal > .narrative-attention-offer {
+  animation: narrative-reveal-in 160ms steps(2) backwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.narrative-choice {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid var(--narrative-line);
+  background: var(--paper);
+  color: var(--narrative-copy);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 0 var(--shadow);
+  transition:
+    background-color 60ms steps(2),
+    color 60ms steps(2);
+}
+
+.narrative-continue {
+  display: block;
+  width: auto;
+  min-width: 8.5rem;
+  margin-left: auto;
+  padding-inline: 1rem;
+  color: var(--brass);
+  text-align: center;
+}
+
+.narrative-choice:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.narrative-choice:active {
+  background: var(--paper-dk);
+  color: var(--narrative-copy);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  transform: translate(1px, 1px);
+}
+
+.narrative-choice:disabled {
+  border-color: var(--ink-soft);
+  background: var(--paper-mid);
+  color: var(--ink-soft);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  cursor: not-allowed;
+}
+
+.narrative-choice:disabled:hover {
+  background: var(--paper-mid);
+  color: var(--ink-soft);
+}
+
+.narrative-choice-silence {
+  border-style: dashed;
+  color: var(--narrative-muted);
+}
+
+.narrative-overlay button:focus-visible,
+.narrative-overlay input:focus-visible,
+.narrative-summary:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--signal-dim);
+}
+
+.narrative-attention {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+}
+
+.narrative-attention-prompt {
+  position: absolute;
+  right: clamp(1rem, 16vw, 16rem);
+  bottom: calc((1080 - 840) / 1080 * 100%);
+  left: clamp(1rem, 16vw, 16rem);
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--narrative-line);
+  background: var(--narrative-panel);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  color: var(--narrative-copy);
+  font-size: 0.92em;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.narrative-attention-offers {
+  position: absolute;
+  inset: 0;
+}
+
+/* Small worn-paper tags offset BESIDE their subject (never covering it), with a
+   hard pixel pointer arm aimed at the subject (QA: cards must not occlude what
+   they name; sized to their text per art/direction/ui_style_guide.md). */
+.narrative-attention-offer {
+  position: absolute;
+  width: max-content;
+  max-width: 11rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.45rem 0.6rem;
+  border: 2px solid var(--narrative-line);
+  border-left: 2px solid var(--signal);
+  background: var(--narrative-panel);
+  box-shadow:
+    3px 3px 0 0 var(--shadow),
+    inset -2px -2px 0 0 var(--paper-mid);
+  color: var(--narrative-copy);
+  font: inherit;
+  font-size: 0.82em;
+  font-weight: 750;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background-color 60ms steps(2),
+    color 60ms steps(2);
+}
+
+.narrative-attention-offer::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--narrative-line);
+}
+
+.narrative-attention-offer:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.narrative-attention-offer:active {
+  background: var(--paper-dk);
+  box-shadow: 2px 2px 0 0 var(--shadow);
+  transform: translate(1px, 1px);
+}
+
+/* Television housing sits at 72.7-82.5% x, 14.4-28.6% y: tag hangs below-left
+   of the set, pointer arm up-right toward the screen. */
+.attention-target-television {
+  top: 31%;
+  right: 20%;
+  left: auto;
+}
+
+.attention-target-television::after {
+  top: -12px;
+  right: 8px;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+/* Arkady seated at table A's east chair (~49-57% x, 41-59% y): tag to his
+   upper-right in the clear wall band, pointer arm left toward him. */
+.attention-target-arkady {
+  top: 38%;
+  left: 59%;
+}
+
+.attention-target-arkady::after {
+  top: 10px;
+  left: -12px;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+/* Galina stands at the counter (~28-35.5% x, 32-57% y): tag to her right over
+   the service door band, pointer arm left toward her. */
+.attention-target-galina {
+  top: 34%;
+  left: 37.5%;
+}
+
+.attention-target-galina::after {
+  top: 10px;
+  left: -12px;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.narrative-summary-lines p {
+  max-width: 72ch;
+  margin: 0.55rem 0 0;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.narrative-modal {
+  font-size: inherit;
+}
+
+.narrative-modal-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.narrative-modal-actions .choice-button {
+  width: 100%;
+}
+
+.narrative-settings-group {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border: 2px solid var(--narrative-line);
+}
+
+.narrative-settings-group legend {
+  padding: 0 0.35rem;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 400;
+}
+
+.narrative-settings-group label {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.narrative-settings-group input {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  accent-color: var(--signal);
+}
+
+/* At the 1366 by 768 review viewport the 640 by 360 room presents at 2x.
+   Four practical actions need slightly more of that stage than the earlier
+   two-choice proof. Keep the speaker and room line visible with the choices so
+   keyboard focus on the last action does not scroll the scene context away. */
+@media (min-width: 1280px) and (max-width: 1400px) {
+  .narrative-dialogue {
+    max-height: 50%;
+  }
+
+  .narrative-choice-list {
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+  }
+}
+
+/* Short/narrow windows render the pixel stage at 1x (640x360), so the dialogue
+   panel has little vertical room and its choices clip. Tighten the choice
+   spacing, give the panel a lower anchor and more height so both choices fit,
+   and keep a meaningful strip of room visible above. Desktop spacing (larger
+   scales) is untouched. */
+@media (max-width: 1279px), (max-height: 719px) {
+  .narrative-dialogue,
+  .narrative-summary {
+    right: 1rem;
+    left: 1rem;
+    bottom: 10%;
+    max-height: 62%;
+  }
+
+  .narrative-line {
+    margin-top: 0.3rem;
+  }
+
+  .narrative-choice-list {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .narrative-choice {
+    min-height: 40px;
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+@media (max-width: 800px), (max-height: 520px) {
+  .narrative-hud {
+    width: min(25rem, 62%);
+    padding: 0.45rem 0.6rem;
+  }
+
+  .narrative-dialogue,
+  .narrative-summary {
+    right: 1rem;
+    left: 1rem;
+    max-height: 52%;
+  }
+
+  .narrative-attention-prompt {
+    right: 1rem;
+    left: 1rem;
+  }
+}

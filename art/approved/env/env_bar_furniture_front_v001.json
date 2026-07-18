@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_furniture_front_v001",
+  "status": "approved",
+  "source_prompt": "art/source/env/furniture_front.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "640x360 native; geometry traced from blockout (logical/3, horizon y=120); palette-clean via check-palette.ts; inspected composite at 3x and 8x crops. Front occlusion: counter top strip+front face (masked where nearer table D overlaps), tabletop near-edge crescents+aprons, E/W chair front legs (table-masked), S-seat camera-facing backrests, 2 counter stools at x120/x170. Verify with seated sprites at principal anchors. Transparent layer. REVIEW 2026-07-17: palette-clean (check-palette.ts exit 0 all layers); geometry verified against art/blockout/bar_perspective.svg (counter/doors/TV/5 tables/18 seat anchors within ~2 native px); edges clean at 8x, no dither/orphan pixels/partial alpha; no baked text; readable at 100%. Advisory: rear-chair seat planes sit above tabletop rims per blockout anchor scheme (anchor=seat plane); verify visually once seated character sprites land."
+}

@@ -1,0 +1,20 @@
+{
+  "asset_id": "prop_faceted_glass_small_v001",
+  "status": "review",
+  "asset_type": "table_prop",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "docs/ASSET_MANIFEST.md"
+  ],
+  "historical_ledger_ids": ["PROP-001"],
+  "frame": { "width": 9, "height": 12 },
+  "anchor": {
+    "id": "base-center",
+    "x": 4,
+    "y": 11,
+    "note": "local sprite-space contact point (bottom of the base foot ring); engine positions this pixel at the table/hand anchor it is placed on — not a fixed scene coordinate, this prop is reused across tables A-E."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Classic 10-12 facet Soviet tumbler (граненый стакан), empty. Light upper-left convention matches char scripts: soot_4 lit facet band / soot_3 mid / soot_2 shadow facet, cream_3 2px rim glint, soot_1 base foot. Palette-clean via check-palette.ts. Inspected at 8x. PROP-001 ledger entry status is 'unverified' per HISTORICAL_LEDGER.csv — needs a dated catalog/photo source before final approval."
+}

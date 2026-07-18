@@ -1,0 +1,16 @@
+{
+  "asset_id": "env_bar_door_light_overlay_v001",
+  "status": "review",
+  "asset_type": "fx_mask",
+  "source_prompt": "art/source/props/fx.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 640, "height": 360 },
+  "anchor": null,
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Layer: light_overlays. Engine-blended door-open exterior light per environment_notes ('teal_0->cyan_0 streak from street entrance ... separate engine overlay, bake none of them'). Localized to the street door leaf (native x537-569,y99-218, bar_mid.svg) plus a short floor spill (~40px) toward the room, not a room-crossing beam. Sparse teal_0 dither with a cyan_0 seam at the door glass itself, max density 0.28. v001 first pass fanned the light ~150px across the midground, over the TV and several tables — rebuilt short and localized. Palette-clean via check-palette.ts. Verified by compositing over env_bar_bg_far_v001+env_bar_bg_mid_v001 at 3x."
+}

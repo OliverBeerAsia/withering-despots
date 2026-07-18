@@ -1,0 +1,14 @@
+{
+  "asset_id": "char_lev_silhouette_v001",
+  "status": "review",
+  "canonical_character": "lev",
+  "source_prompt": "art/source/char/lev.ts",
+  "reference_assets": [
+    "art/direction/character_cards/lev.md",
+    "char_lev_sheet_v001.png",
+    "art/approved/char/char_arkady_silhouette_v002.png"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "Silhouette gate asset: standing (frame 0) + seated_listen (frame 1), every body pixel soot_0. Card feature check: shortest standing height of the two packages produced so far (80px vs arkady's 90px, same foot line), visibly stooped comma-shape (head/neck curve forward from the torso in both poses, never straightens), round head silhouette with a distinct occiput bump (ear) and glasses-notch readable even as pure silhouette, wide compact rectangular torso vs arkady's narrow vertical stroke. Composited against char_arkady_silhouette_v002 (only other package produced at this point): clearly distinguishable by height, posture, head shape, and torso proportion. Full six-way check to be re-run once nikolai/sasha/galina/gennady exist."
+}

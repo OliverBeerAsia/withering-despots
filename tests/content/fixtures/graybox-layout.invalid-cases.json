@@ -1,0 +1,14 @@
+{
+  "duplicateAnchorId": {
+    "sourceId": "anchor-room-center",
+    "targetId": "anchor-counter"
+  },
+  "missingAnchorId": {
+    "sourceId": "anchor-counter",
+    "replacementId": "anchor-unused-test"
+  },
+  "overlapHotspots": {
+    "sourceId": "telephone",
+    "targetId": "television"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "asset_id": "char_sasha_sheet_v001",
+  "status": "review",
+  "canonical_character": "sasha",
+  "source_prompt": "art/source/char/sasha.ts",
+  "reference_assets": [
+    "art/direction/character_cards/sasha.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md",
+    "art/source/char/arkady.ts"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 86,
+    "head_px": 14,
+    "shoulders_px": 18,
+    "seated_crown_to_floor_px": 65,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "v001 direct pixel authoring. All 9 pipeline poses rendered for asset-management parity even though the card marks seated poses as rare ('keep standing poses primary', 'never stage her seated at patron tables in the slice') — that constraint governs scene staging, not the sprite package. Skin planes: flesh_1 base with the LARGEST flesh_2 lamplit planes of the cast (forehead, cheek toward lamp), flesh_0 minimal, per card. Waistcoat is a fitted olive overlay on the shirt torso, tapered to the same silhouette curve as the body (not a flat rectangle) with 3 button dots and a half-apron + tucked bar cloth at the waist. Signature pose holds a faceted glass (cyan_1/cyan_2 highlight) and cloth still at chest height in the near hand; far arm hangs at rest.",
+  "bugs_fixed_during_authoring": [
+    "torsoDetails() computed the waistcoat half-width as an unrounded float; span()'s pixel loop silently drops non-integer x coordinates (SpriteCanvas.setPixel indexes by y*width+x, and a fractional index never round-trips through getPixel), so the vest was rendering as fully transparent — the torso showed only the bare shirt underneath. Fixed by wrapping the half-width calc in Math.round(); this class of bug is worth grep-checking in any future character script that computes span bounds from a t-interpolated float without rounding.",
+    "Initial neck/head taper (5 rows of the chin narrowing to a single pixel column, stacked atop the neck) read as an elongated 'stalk' close to arkady's frailty-coded long neck, undercutting the two characters' silhouette distinctiveness. Widened the jaw taper across rows 8-11 (oval jaw held fuller longer, pointed only in the last 2 rows) and shortened the shoulder offset (torsoTop) by 2px to shrink the actual bare-neck run."
+  ],
+  "self_critique": [
+    "Neck/head column is still visually slim compared to the torso — closer to arkady's proportions than ideal, though the bob-hair silhouette, waistcoat block, and apron-flared hip read as clearly distinct in the three-character silhouette check (art/review_queue/char/char_sasha_silhouette_v001.png). Flagged for a possible second pass if reviewers want more separation from arkady's read once gennady/lev/nikolai exist to check against.",
+    "Six-silhouette check run against the only two other completed characters in the project (arkady, galina) — gennady/lev/nikolai packages do not yet exist in review_queue."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "asset_id": "char_arkady_sheet_v001",
+  "status": "superseded_by_v002",
+  "canonical_character": "arkady",
+  "source_prompt": "art/source/char/arkady.ts",
+  "reference_assets": [
+    "art/direction/character_cards/arkady.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 90,
+    "head_px": 15,
+    "shoulders_px": 17,
+    "seated_crown_to_floor_px": 68,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "Direct pixel authoring per card metrics (90 px standing, 15 px head, 17 px shoulders, seated crown-to-floor 68, pelvis on 24 px seat plane at frame y=69, feet on foot line y=93). Facing left 3/4, pendant light upper-left. Palette-clean via check-palette.ts. Inspected at 3x (game scale), 8x, and 16x head crops against ART_BIBLE section 8 people checklist. Breathing = 1 px chest/head lift; blink frame same geometry, lids only. Jacket unbuttoned only in scripted exhausted pose. No chair/table pixels; per-pose PNGs share this sheet's frame coordinates."
+}

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">Café-Bar The Shift Phase 1 floor plan</title>
+  <desc id="desc">Dimensioned 7.2 by 5.8 metre graybox with five tables, eighteen seats, counter, doors, television, telephone, actor anchors, and walk anchors.</desc>
+  <style>
+    .room { fill: #202830; stroke: #d9e0dc; stroke-width: 4; }
+    .fixture { fill: #65727a; stroke: #e4e9e6; stroke-width: 2; }
+    .table { fill: #526e72; stroke: #d5eeee; stroke-width: 2; }
+    .seat { fill: #9a7658; stroke: #f3dac5; stroke-width: 2; }
+    .door { fill: none; stroke: #e7c77b; stroke-width: 4; }
+    .path { fill: none; stroke: #8fc5a6; stroke-width: 3; stroke-dasharray: 10 8; }
+    .anchor { fill: #f2d470; stroke: #1a2025; stroke-width: 2; }
+    .patron { fill: #d88876; stroke: #1a2025; stroke-width: 2; }
+    .dimension { fill: none; stroke: #aeb8bd; stroke-width: 1.5; }
+    .label { fill: #f5f3ea; font: 14px ui-monospace, monospace; }
+    .small { fill: #d8dedb; font: 11px ui-monospace, monospace; }
+  </style>
+
+  <rect width="960" height="760" fill="#11171d" />
+
+  <g id="room-envelope">
+    <rect id="room-7_2m-by-5_8m" class="room" x="120" y="80" width="720" height="580" />
+    <circle id="anchor-room-center" class="anchor" cx="480" cy="370" r="7" />
+    <text class="label" x="124" y="72">rear wall / 7.2 m</text>
+    <text class="small" x="126" y="680">camera-facing cutaway</text>
+  </g>
+
+  <g id="dimensions">
+    <path class="dimension" d="M120 45V68M840 45V68M120 56H840" />
+    <text class="label" x="438" y="40">7.2 m</text>
+    <path class="dimension" d="M865 80H888M865 660H888M877 80V660" />
+    <text class="label" x="895" y="392" transform="rotate(90 895 392)">5.8 m</text>
+    <text class="small" x="742" y="748">scale: 100 px = 1 m</text>
+  </g>
+
+  <g id="service-corridor">
+    <rect class="fixture" x="145" y="18" width="92" height="62" />
+    <text class="small" x="151" y="38">short service</text>
+    <text class="small" x="151" y="53">corridor</text>
+  </g>
+  <g id="service-door">
+    <path class="door" d="M145 80H237M145 80A92 92 0 0 1 237 172" />
+    <circle id="anchor-service-door" class="anchor" cx="191" cy="80" r="7" />
+    <text class="small" x="148" y="103">service door</text>
+  </g>
+  <g id="street-entrance">
+    <path class="door" d="M840 438V538M840 438A100 100 0 0 0 740 538" />
+    <circle id="anchor-entrance" class="anchor" cx="840" cy="488" r="7" />
+    <text class="small" x="744" y="558">street entrance</text>
+  </g>
+
+  <g id="counter-rear-left">
+    <rect class="fixture" x="150" y="125" width="275" height="50" rx="4" />
+    <rect class="fixture" x="150" y="175" width="52" height="220" rx="4" />
+    <circle id="anchor-counter" class="anchor" cx="240" cy="150" r="7" />
+    <text class="label" x="234" y="155">counter</text>
+  </g>
+  <g id="phone-behind-counter">
+    <rect class="fixture" x="246" y="135" width="34" height="22" rx="5" />
+    <circle id="anchor-telephone" class="anchor" cx="263" cy="146" r="5" />
+    <text class="small" x="285" y="151">phone</text>
+  </g>
+  <g id="television-high-right">
+    <rect class="fixture" x="803" y="145" width="28" height="48" rx="3" />
+    <circle id="anchor-television" class="anchor" cx="817" cy="169" r="5" />
+    <text class="small" x="708" y="173">TV high/right</text>
+  </g>
+
+  <g id="table-a" class="table">
+    <circle cx="345" cy="245" r="37" />
+    <circle id="anchor-table-a" class="anchor" cx="345" cy="245" r="6" />
+    <text class="label" x="338" y="250">A</text>
+  </g>
+  <g id="table-b" class="table">
+    <circle cx="570" cy="230" r="37" />
+    <circle id="anchor-table-b" class="anchor" cx="570" cy="230" r="6" />
+    <text class="label" x="563" y="235">B</text>
+  </g>
+  <g id="table-c" class="table">
+    <circle cx="330" cy="425" r="37" />
+    <circle id="anchor-table-c" class="anchor" cx="330" cy="425" r="6" />
+    <text class="label" x="323" y="430">C</text>
+  </g>
+  <g id="table-d" class="table">
+    <circle cx="575" cy="410" r="37" />
+    <circle id="anchor-table-d" class="anchor" cx="575" cy="410" r="6" />
+    <text class="label" x="568" y="415">D</text>
+  </g>
+  <g id="table-e" class="table">
+    <circle cx="455" cy="570" r="37" />
+    <circle id="anchor-table-e" class="anchor" cx="455" cy="570" r="6" />
+    <text class="label" x="448" y="575">E</text>
+  </g>
+
+  <g id="anchor-seat-01" class="seat"><circle cx="345" cy="185" r="17" /><text class="small" x="337" y="189">01</text></g>
+  <g id="anchor-seat-02" class="seat"><circle cx="405" cy="245" r="17" /><text class="small" x="397" y="249">02</text></g>
+  <g id="anchor-seat-03" class="seat"><circle cx="345" cy="305" r="17" /><text class="small" x="337" y="309">03</text></g>
+  <g id="anchor-seat-04" class="seat"><circle cx="285" cy="245" r="17" /><text class="small" x="277" y="249">04</text></g>
+  <g id="anchor-seat-05" class="seat"><circle cx="570" cy="170" r="17" /><text class="small" x="562" y="174">05</text></g>
+  <g id="anchor-seat-06" class="seat"><circle cx="630" cy="230" r="17" /><text class="small" x="622" y="234">06</text></g>
+  <g id="anchor-seat-07" class="seat"><circle cx="570" cy="290" r="17" /><text class="small" x="562" y="294">07</text></g>
+  <g id="anchor-seat-08" class="seat"><circle cx="510" cy="230" r="17" /><text class="small" x="502" y="234">08</text></g>
+  <g id="anchor-seat-09" class="seat"><circle cx="330" cy="365" r="17" /><text class="small" x="322" y="369">09</text></g>
+  <g id="anchor-seat-10" class="seat"><circle cx="390" cy="425" r="17" /><text class="small" x="382" y="429">10</text></g>
+  <g id="anchor-seat-11" class="seat"><circle cx="330" cy="485" r="17" /><text class="small" x="322" y="489">11</text></g>
+  <g id="anchor-seat-12" class="seat"><circle cx="575" cy="350" r="17" /><text class="small" x="567" y="354">12</text></g>
+  <g id="anchor-seat-13" class="seat"><circle cx="635" cy="410" r="17" /><text class="small" x="627" y="414">13</text></g>
+  <g id="anchor-seat-14" class="seat"><circle cx="575" cy="470" r="17" /><text class="small" x="567" y="474">14</text></g>
+  <g id="anchor-seat-15" class="seat"><circle cx="515" cy="410" r="17" /><text class="small" x="507" y="414">15</text></g>
+  <g id="anchor-seat-16" class="seat"><circle cx="455" cy="510" r="17" /><text class="small" x="447" y="514">16</text></g>
+  <g id="anchor-seat-17" class="seat"><circle cx="515" cy="570" r="17" /><text class="small" x="507" y="574">17</text></g>
+  <g id="anchor-seat-18" class="seat"><circle cx="395" cy="570" r="17" /><text class="small" x="387" y="574">18</text></g>
+
+  <g id="movement-paths">
+    <path class="path" d="M235 355L270 520L500 500L710 410L770 220" />
+    <path class="path" d="M500 500L700 560L790 488" />
+  </g>
+  <g id="anchor-sasha-bar"><circle class="anchor" cx="235" cy="205" r="8" /><text class="small" x="247" y="210">Sasha bar</text></g>
+  <g id="anchor-sasha-telephone"><circle class="anchor" cx="230" cy="146" r="8" /><text class="small" x="188" y="122">Sasha phone</text></g>
+  <g id="anchor-sasha-television"><circle class="anchor" cx="770" cy="220" r="8" /><text class="small" x="682" y="221">Sasha TV</text></g>
+  <g id="anchor-walk-counter-exit"><circle class="anchor" cx="235" cy="355" r="7" /><text class="small" x="142" y="420">counter exit</text></g>
+  <g id="anchor-walk-west"><circle class="anchor" cx="270" cy="520" r="7" /><text class="small" x="216" y="542">walk west</text></g>
+  <g id="anchor-walk-center"><circle class="anchor" cx="500" cy="500" r="7" /><text class="small" x="510" y="499">walk center</text></g>
+  <g id="anchor-walk-east"><circle class="anchor" cx="710" cy="410" r="7" /><text class="small" x="700" y="394">walk east</text></g>
+  <g id="anchor-walk-entrance"><circle class="anchor" cx="790" cy="488" r="7" /><text class="small" x="687" y="490">walk entrance</text></g>
+  <g id="anchor-patron-north"><circle class="patron" cx="345" cy="185" r="9" /><text class="small" x="365" y="174">patron north</text></g>
+  <g id="anchor-patron-east"><circle class="patron" cx="630" cy="230" r="9" /><text class="small" x="650" y="218">patron east</text></g>
+  <g id="anchor-patron-south"><circle class="patron" cx="330" cy="485" r="9" /><text class="small" x="345" y="506">patron south</text></g>
+  <g id="anchor-patron-west"><circle class="patron" cx="515" cy="410" r="9" /><text class="small" x="400" y="405">patron west</text></g>
+</svg>

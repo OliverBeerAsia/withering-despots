@@ -1,0 +1,20 @@
+{
+  "asset_id": "prop_tea_glass_holder_v001",
+  "status": "review",
+  "asset_type": "table_prop",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "docs/ASSET_MANIFEST.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 13, "height": 17 },
+  "anchor": {
+    "id": "base-center",
+    "x": 5,
+    "y": 14,
+    "note": "local sprite-space contact point at the holder's base ring; handle projects right (cols 10-12) beyond the anchor column, by design."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Podstakannik (openwork metal glass holder) with faceted glass filled with tea: amber_2/amber_1/amber_0 liquid bands + cream_3 surface glint, soot_3/soot_2 metal cradle with a C-loop handle to the right so the silhouette reads clean. v001 first pass widened the frame from 12 to 13px after an 8x check showed the handle clipping off-canvas. Palette-clean via check-palette.ts. Inspected at 8x. No HISTORICAL_LEDGER entry yet — flag for historian pass (dated catalog/photo of podstakannik style)."
+}

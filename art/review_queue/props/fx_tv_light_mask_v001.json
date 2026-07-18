@@ -1,0 +1,16 @@
+{
+  "asset_id": "fx_tv_light_mask_v001",
+  "status": "review",
+  "asset_type": "fx_mask",
+  "source_prompt": "art/source/props/fx.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 640, "height": 360 },
+  "anchor": null,
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Layer: light_overlays. Engine-blended CRT accent mask per environment_notes Light logic #3 ('CRT light should affect nearby faces only during bright frames ... dynamic flicker is fx_tv_light_mask, engine-blended, never baked into layers'). Tight halo (rx34/ry26) centered just below the screen aperture (native ~485,87), nudged toward table B / patron-east but staying well short of them. Sparse cyan_0/cyan_1 dither, max density 0.32, fully transparent elsewhere. v001 first pass (rx130/ry90, density 0.5) sprawled across a third of the room and over the notice board/pennant when composited over env_bar_bg_far+bg_mid — rebuilt tight and localized. Palette-clean via check-palette.ts. Verified by compositing over env_bar_bg_far_v001+env_bar_bg_mid_v001 at 3x — engine should only enable this during broadcast_glow-bright TV frames, not statically."
+}

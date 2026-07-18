@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_seat_back_v001",
+  "status": "review",
+  "source_prompt": "art/source/env/seat_back.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "640x360 native; geometry traced from blockout (logical/3, horizon y=120); palette-clean via check-palette.ts; inspected composite at 3x and 8x crops. Rear chair parts at all 18 seat anchors (anchor=seat plane, floor=anchor+24px cast scale); bentwood type only; south seats (03,07,14) rear parts only; tabletop ellipses masked out. Transparent layer."
+}

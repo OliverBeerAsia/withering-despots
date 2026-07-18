@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "phase-0-placeholder",
+  "scene": {
+    "logicalWidth": 1920,
+    "logicalHeight": 1080
+  },
+  "ui": {
+    "statusKey": "phase0.status"
+  }
+}

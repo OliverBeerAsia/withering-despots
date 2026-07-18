@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_seat_back_v001",
+  "status": "approved",
+  "source_prompt": "art/source/env/seat_back.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "640x360 native; geometry traced from blockout (logical/3, horizon y=120); palette-clean via check-palette.ts; inspected composite at 3x and 8x crops. Rear chair parts at all 18 seat anchors (anchor=seat plane, floor=anchor+24px cast scale); bentwood type only; south seats (03,07,14) rear parts only; tabletop ellipses masked out. Transparent layer. REVIEW 2026-07-17: palette-clean (check-palette.ts exit 0 all layers); geometry verified against art/blockout/bar_perspective.svg (counter/doors/TV/5 tables/18 seat anchors within ~2 native px); edges clean at 8x, no dither/orphan pixels/partial alpha; no baked text; readable at 100%. Advisory: rear-chair seat planes sit above tabletop rims per blockout anchor scheme (anchor=seat plane); verify visually once seated character sprites land."
+}

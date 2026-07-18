@@ -1,0 +1,21 @@
+{
+  "asset_id": "prop_tv_screen_off_v001",
+  "status": "review",
+  "asset_type": "prop_scene_fixed",
+  "source_prompt": "art/source/props/tv_screen.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "content/graybox-layout.json"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 49, "height": 29 },
+  "anchor": {
+    "id": "screen-aperture-top-left",
+    "x": 471,
+    "y": 59,
+    "note": "fixed native-canvas placement — fills the transparent screen hole left in env_bar_bg_mid's TV housing (comment: 'screen aperture x471-520 y59-88'). Not reused elsewhere."
+  },
+  "occlusion": { "behind": null, "in_front_of": null, "fills_aperture_of": "env_bar_bg_mid" },
+  "review_notes": "Dead CRT glass: soot_1 tube field with soot_0 vignette toward the corners, faint soot_2 dead-glass reflection streak upper-left. Palette-clean via check-palette.ts. Inspected at 8x standalone and composited over env_bar_bg_mid+bg_far at 3x to confirm exact aperture fit."
+}

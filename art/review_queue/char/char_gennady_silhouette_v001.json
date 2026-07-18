@@ -1,0 +1,14 @@
+{
+  "asset_id": "char_gennady_silhouette_v001",
+  "status": "pending_review",
+  "canonical_character": "gennady",
+  "source_prompt": "art/source/char/gennady.ts",
+  "reference_assets": [
+    "art/direction/character_cards/gennady.md",
+    "art/approved/char/char_arkady_silhouette_v002.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": ["standing", "seated_listen"],
+  "review_notes": "Six-silhouette check run against the approved arkady silhouette (only other package produced so far): clearly distinct. Arkady reads tall/narrow/vertical with arms tucked to the body; Gennady reads short/broad — 24px shoulders vs arkady's 17px, a forward-tipped wedge torso, and a forearm extended clear of the silhouette in both standing and seated frames. No confusion between the two at a glance. Re-run this check against sasha/galina/lev/nikolai once they exist."
+}

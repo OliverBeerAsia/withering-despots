@@ -1,0 +1,28 @@
+.DS_Store
+
+# Dependencies and local package stores
+node_modules/
+.pnpm-store/
+
+# Build and test output
+dist/
+coverage/
+test-results/
+playwright-report/
+blob-report/
+*.tsbuildinfo
+
+# Local browser tooling and scratch output
+.playwright-cli/
+output/
+/*.png
+
+# Local environment and tool noise
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*

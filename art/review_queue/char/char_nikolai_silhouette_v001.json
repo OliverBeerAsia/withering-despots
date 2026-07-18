@@ -1,0 +1,15 @@
+{
+  "asset_id": "char_nikolai_silhouette_v001",
+  "status": "review",
+  "canonical_character": "nikolai",
+  "source_prompt": "art/source/char/nikolai.ts",
+  "reference_assets": [
+    "art/direction/character_cards/nikolai.md",
+    "char_nikolai_sheet_v001.png",
+    "art/approved/char/char_arkady_silhouette_v002.png",
+    "char_lev_silhouette_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "Silhouette gate asset: standing (frame 0) + seated_listen (frame 1), every body pixel soot_0. Card feature check: widest shoulders / rectangular-monolith torso of all three packages produced so far, no neck indent (head sits directly in the shoulder mass, vs the visible neck on arkady and lev), symmetric vertical posture (vs lev's forward stoop and arkady's narrow lean). Composited three-up against char_arkady_silhouette_v002 (tall/narrow/upright, small head) and char_lev_silhouette_v001 (short/stooped/round-headed): all three clearly distinguishable by height, width, posture, and head/neck junction. Full six-way check to be re-run once sasha/galina/gennady exist."
+}

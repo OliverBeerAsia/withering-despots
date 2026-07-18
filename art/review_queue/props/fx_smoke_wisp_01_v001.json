@@ -1,0 +1,21 @@
+{
+  "asset_id": "fx_smoke_wisp_01_v001",
+  "status": "review",
+  "asset_type": "fx_overlay",
+  "source_prompt": "art/source/props/fx.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/review_queue/props/fx_smoke_wisp_02_v001.png",
+    "art/review_queue/props/fx_smoke_wisp_03_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 14, "height": 26 },
+  "anchor": {
+    "id": "base-center",
+    "x": 7,
+    "y": 25,
+    "note": "local sprite-space origin point (bottom, dense end); engine positions this at an ashtray/cigarette anchor. One of 3 asynchronous loop frames — see 02/03."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Layer: atmosphere. Sparse stochastic dither (soot_4 core / soot_3 edge, ~55% density at base thinning to ~5% at the top) faking low alpha — SpriteCanvas has no partial-alpha, so opacity is approximated by pixel coverage per ART_BIBLE §7 ('smoke is an animated overlay ... keep it subtle, should not erase faces'). Lazy S-curl rise, ~3.5px lateral drift, dissipates upward. Palette-clean via check-palette.ts. Inspected at 8x — reads as a thin drifting wisp, not a solid cloud."
+}

@@ -1,0 +1,9 @@
+{
+  "asset_id": "char_sasha_silhouette_v001",
+  "status": "review",
+  "canonical_character": "sasha",
+  "source_prompt": "art/source/char/sasha.ts",
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": ["standing", "seated_listen"],
+  "review_notes": "Pure soot_0 silhouette pass (toSilhouette) of the standing and seated_listen frames, composited side by side for the cast six-silhouette check. Dominant feature: tall, slim, upright figure with a wedge-shaped short bob, straight shoulder line, visible arm gaps at the sides, and a flared apron/waistcoat hem breaking the hip line — distinct from arkady's narrow pencil-stroke-with-tiny-forward-head and galina's wide bun-topped block (only other completed cast silhouettes at time of authoring)."
+}

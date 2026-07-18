@@ -1,0 +1,13 @@
+{
+  "asset_id": "char_arkady_silhouette_v001",
+  "status": "superseded_by_v002",
+  "canonical_character": "arkady",
+  "source_prompt": "art/source/char/arkady.ts",
+  "reference_assets": [
+    "art/direction/character_cards/arkady.md",
+    "char_arkady_sheet_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "Silhouette gate asset: standing (frame 0) + seated_listen (frame 1), every body pixel soot_0. Card feature check: tallest/narrowest of cast, pure vertical stroke, small head 2-3 px forward on long neck, no hat, no bulk. C1 cross-cast distinctness to be verified when remaining five silhouettes exist."
+}

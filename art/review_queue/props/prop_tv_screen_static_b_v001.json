@@ -1,0 +1,22 @@
+{
+  "asset_id": "prop_tv_screen_static_b_v001",
+  "status": "review",
+  "asset_type": "prop_scene_fixed",
+  "source_prompt": "art/source/props/tv_screen.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "content/graybox-layout.json",
+    "art/review_queue/props/prop_tv_screen_static_a_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 49, "height": 29 },
+  "anchor": {
+    "id": "screen-aperture-top-left",
+    "x": 471,
+    "y": 59,
+    "note": "fixed native-canvas placement, same aperture as prop_tv_screen_off. Pair with static_a, alternate for a flicker animation."
+  },
+  "occlusion": { "behind": null, "in_front_of": null, "fills_aperture_of": "env_bar_bg_mid" },
+  "review_notes": "Same construction as static_a with a different noise seed (97) — see that sidecar for the photosensitivity rationale. Palette-clean via check-palette.ts. Inspected at 8x."
+}

@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "colors": [
+    {
+      "id": "soot_0",
+      "hex": "#131114",
+      "role": "ink black: character outlines, UI ink, night glass, deepest interior shadow"
+    },
+    {
+      "id": "soot_1",
+      "hex": "#262227",
+      "role": "shadow mass: under-counter, ceiling corners, dark hair, trouser shadow"
+    },
+    {
+      "id": "soot_2",
+      "hex": "#3d383b",
+      "role": "mid graphite: trousers, floor grout, TV housing, gray hair shadow"
+    },
+    {
+      "id": "soot_3",
+      "hex": "#5a524e",
+      "role": "warm concrete gray: worn floor, aged suit gray, ashtray metal, gray hair mid"
+    },
+    {
+      "id": "soot_4",
+      "hex": "#7d7268",
+      "role": "light warm gray: smoke wisps, dust, plaster shadow edge, gray hair light"
+    },
+    {
+      "id": "cream_0",
+      "hex": "#665a45",
+      "role": "cream family deep shade: paper in shadow, plaster shade, apron shadow"
+    },
+    {
+      "id": "cream_1",
+      "hex": "#8c7d5f",
+      "role": "cream mid-shade: aged plaster mid, ledger ruling zone, doily/napkin shadow"
+    },
+    {
+      "id": "cream_2",
+      "hex": "#b2a17c",
+      "role": "cream mid-light: upper wall plaster in lamplight, worn paper body"
+    },
+    {
+      "id": "cream_3",
+      "hex": "#d8c69d",
+      "role": "brightest matte value: UI paper panels, lamplit paper, cigarette paper, highlights on cloth"
+    },
+    {
+      "id": "amber_0",
+      "hex": "#57381c",
+      "role": "tobacco amber deep: nicotine-stained ceiling shadow, dark tea, bottle glass shadow"
+    },
+    {
+      "id": "amber_1",
+      "hex": "#855524",
+      "role": "amber mid: stained upper walls, lampshade shade side, tea in glass"
+    },
+    {
+      "id": "amber_2",
+      "hex": "#b47c31",
+      "role": "amber light: pendant light pools on tables/faces, brass fittings, beer"
+    },
+    {
+      "id": "amber_3",
+      "hex": "#dda549",
+      "role": "amber glow core: pendant bulbs, filament, brightest warm accent (small areas only)"
+    },
+    {
+      "id": "wood_0",
+      "hex": "#2b1d12",
+      "role": "honey-brown darkest: wood in shadow, counter underside, chair legs"
+    },
+    {
+      "id": "wood_1",
+      "hex": "#46301c",
+      "role": "wood shade: table sides, wainscot shade, stool seats"
+    },
+    {
+      "id": "wood_2",
+      "hex": "#654627",
+      "role": "wood mid: varnished tabletops, counter front, door frames"
+    },
+    {
+      "id": "wood_3",
+      "hex": "#8a6435",
+      "role": "wood highlight: varnish sheen line on counter/table edges under lamps"
+    },
+    {
+      "id": "teal_0",
+      "hex": "#182a28",
+      "role": "oxidized teal darkest: service door shadow, painted metal shade, exterior night"
+    },
+    {
+      "id": "teal_1",
+      "hex": "#2a4540",
+      "role": "teal shade: painted wainscot / column paint, radiator, door body"
+    },
+    {
+      "id": "teal_2",
+      "hex": "#416359",
+      "role": "teal mid: painted surfaces in light, upholstery, enamel signage ground"
+    },
+    {
+      "id": "teal_3",
+      "hex": "#628072",
+      "role": "teal light: chipped-paint highlight, fluorescent-lit painted metal behind counter"
+    },
+    {
+      "id": "olive_0",
+      "hex": "#232617",
+      "role": "dark olive deepest: coat shadow, curtain shadow, plant darks"
+    },
+    {
+      "id": "olive_1",
+      "hex": "#3b4023",
+      "role": "olive shade: jackets, cardigans, upholstery shade, curtain body"
+    },
+    {
+      "id": "olive_2",
+      "hex": "#596038",
+      "role": "olive light: lamplit side of olive cloth, felt board, plant lights"
+    },
+    {
+      "id": "red_0",
+      "hex": "#56271f",
+      "role": "brick red deep: banner/pennant shadow, dried-blood red, book spines, brick"
+    },
+    {
+      "id": "red_1",
+      "hex": "#83392b",
+      "role": "brick red accent: small emphasis only - pennant, Party card, stamp ink, lit brick"
+    },
+    {
+      "id": "cyan_0",
+      "hex": "#1e4652",
+      "role": "CRT cyan dark: TV screen dim field, phosphor shadow, cold window bounce"
+    },
+    {
+      "id": "cyan_1",
+      "hex": "#3d7f8c",
+      "role": "CRT cyan mid: broadcast glow body, fluorescent tube cast behind counter"
+    },
+    {
+      "id": "cyan_2",
+      "hex": "#82c7cf",
+      "role": "CRT cyan bright: screen highlights, static frames, brightest cool accent (small areas only)"
+    },
+    {
+      "id": "flesh_0",
+      "hex": "#6a4634",
+      "role": "skin shadow: face/hand shade planes, all cast; mix with soot_3 edge for oldest faces"
+    },
+    {
+      "id": "flesh_1",
+      "hex": "#99674a",
+      "role": "skin mid: base face and hand tone for full cast"
+    },
+    {
+      "id": "flesh_2",
+      "hex": "#c2926c",
+      "role": "skin light: lamplit planes of faces and hands; use sparingly, never full-face"
+    }
+  ]
+}

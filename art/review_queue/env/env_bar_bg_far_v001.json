@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_bg_far_v001",
+  "status": "review",
+  "source_prompt": "art/source/env/bg_far.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "640x360 native; geometry traced from blockout (logical/3, horizon y=120); palette-clean via check-palette.ts; inspected composite at 3x and 8x crops. Walls/ceiling/floor shell, wainscot, rear shelves+bottles, fluorescent tube+splashback, corridor+entrance recesses, clock face, notice board, pennant (red accent), water stain, plaster patch, 5 pendants w/ ceiling halos, table shadows. Opaque."
+}

@@ -1,0 +1,38 @@
+{
+  "asset_id": "char_arkady_pose_seated_listen_v003",
+  "status": "approved",
+  "asset_type": "character_pose",
+  "canonical_character": "arkady",
+  "source_prompt": ".prompts/runs/2026-07-15_char_arkady_seated_listen_run-03.md",
+  "reference_assets": [
+    "art/characters/arkady/char_arkady_master_3q_v001.png",
+    "art/blockout/seat_template_table_a.svg",
+    "art/approved/env_bar_anchor_table_a_preview.png"
+  ],
+  "historical_ledger_ids": [
+    "CLOTH-ARK-001",
+    "CLOTH-ARK-002"
+  ],
+  "anchor": {
+    "id": "seat_table_a_near",
+    "x": 412,
+    "y": 744,
+    "scale": 0.72
+  },
+  "occlusion": {
+    "behind": "env_bar_furniture_front",
+    "in_front_of": "env_bar_seat_back"
+  },
+  "identity_master": "char_arkady_master_3q_v001",
+  "review": {
+    "reviewed_at_source_scale": true,
+    "reviewed_1920x1080": true,
+    "reviewed_1366x768": true,
+    "identity_pass": true,
+    "anatomy_pass": true,
+    "seating_pass": true,
+    "historical_pass": true,
+    "compositing_pass": true,
+    "review_notes": "Identity and seat relationship verified; separate hand/glass layer not present in this listening pose."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "asset_id": "prop_tv_screen_static_a_v001",
+  "status": "review",
+  "asset_type": "prop_scene_fixed",
+  "source_prompt": "art/source/props/tv_screen.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "content/graybox-layout.json",
+    "art/review_queue/props/prop_tv_screen_static_b_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 49, "height": 29 },
+  "anchor": {
+    "id": "screen-aperture-top-left",
+    "x": 471,
+    "y": 59,
+    "note": "fixed native-canvas placement, same aperture as prop_tv_screen_off. Pair with static_b, alternate for a flicker animation."
+  },
+  "occlusion": { "behind": null, "in_front_of": null, "fills_aperture_of": "env_bar_bg_mid" },
+  "review_notes": "Deterministic seeded 5-tone dither noise (soot_0/soot_1/cyan_0/cyan_1/cyan_2) with a corner vignette so the tube shape reads through the static. static_a/static_b share the same average luminance/tone distribution and differ only in noise seed (11 vs 97) — engine alternates them for flicker without a brightness strobe (photosensitivity-safe per spec §4/ART_BIBLE §9). Palette-clean via check-palette.ts. Inspected at 8x."
+}

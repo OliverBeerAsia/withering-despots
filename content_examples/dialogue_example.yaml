@@ -1,0 +1,290 @@
+scene_id: scene_arkady_emergency_claim
+status: sample_not_final_dialogue
+chapter: chapter_0_last_shift
+entry_node: arkady_emergency_necessary
+participants:
+  - sasha
+  - arkady
+  - lev
+historical_ledger_ids:
+  - EVENT-001
+
+nodes:
+  - id: arkady_emergency_necessary
+    speaker: arkady
+    text_key: dialogue.arkady.emergency_necessary
+    pose: char_arkady_pose_seated_talk
+    expression: confidence_formal
+    requires:
+      flags_not:
+        - arkady_emergency_claim_made
+    on_enter:
+      - set_flag: arkady_emergency_claim_made
+      - add_claim: claim_arkady_emergency_necessary
+      - advance_minutes: 2
+    choices:
+      - id: ask_necessary_for_whom
+        text_key: choices.ask_necessary_for_whom
+        effects:
+          - adjust_patron:
+              patron: arkady
+              trust: -1
+              privatePressure: 2
+          - goto: arkady_necessary_for_whom
+      - id: ask_who_authorized
+        text_key: choices.ask_who_authorized
+        requires:
+          player_background_in:
+            - technical
+            - interpreter
+        effects:
+          - add_topic: constitutional_order
+          - goto: arkady_authority_answer
+      - id: silence
+        text_key: common.silence
+        presentation:
+          show_countdown: false
+          hold_seconds_accessible: 2.5
+        effects:
+          - adjust_patron:
+              patron: arkady
+              privatePressure: 1
+          - goto: arkady_fills_silence
+
+  - id: arkady_necessary_for_whom
+    speaker: arkady
+    text_key: dialogue.arkady.necessary_for_everyone
+    pose: char_arkady_pose_lean_in
+    expression: defensive
+    on_enter:
+      - adjust_patron:
+          patron: arkady
+          agitation: 2
+      - advance_minutes: 1
+    choices:
+      - id: ask_name_one_person
+        text_key: choices.ask_name_one_person_helped
+        effects:
+          - goto: arkady_heating_winter
+      - id: let_lev_interrupt
+        text_key: choices.look_to_lev
+        effects:
+          - goto: lev_reliability_interrupts
+      - id: silence
+        text_key: common.silence
+        effects:
+          - goto: arkady_uses_collective_voice
+
+  - id: arkady_authority_answer
+    speaker: arkady
+    text_key: dialogue.arkady.authority_is_not_simple
+    pose: char_arkady_pose_signature_papers
+    expression: corrective
+    on_enter:
+      - add_claim: claim_arkady_authority_complex
+      - advance_minutes: 2
+    choices:
+      - id: ask_did_you_support_them
+        text_key: choices.ask_did_you_support_them
+        effects:
+          - goto: arkady_avoids_first_person
+      - id: return_to_service
+        text_key: choices.return_to_service
+        effects:
+          - return_to_free_roam: true
+
+  - id: arkady_fills_silence
+    speaker: arkady
+    text_key: dialogue.arkady.not_saying_i_approve
+    pose: char_arkady_pose_seated_listen
+    expression: self_correcting
+    on_enter:
+      - add_claim: claim_arkady_distances_from_approval
+      - adjust_patron:
+          patron: arkady
+          publicCertainty: -3
+          privatePressure: 2
+      - advance_minutes: 2
+    choices:
+      - id: observe_wallet
+        text_key: choices.observe_wallet
+        requires:
+          object_state_is:
+            object: prop_arkady_document_wallet
+            state: visible
+        effects:
+          - add_topic: arkady_wallet
+          - goto: sasha_wallet_observation
+      - id: say_nothing_more
+        text_key: common.silence_again
+        effects:
+          - set_flag: arkady_silence_seeded_late_rewrite
+          - return_to_free_roam: true
+
+  - id: arkady_heating_winter
+    speaker: arkady
+    text_key: dialogue.arkady.heating_winter_specific
+    pose: char_arkady_pose_lean_back
+    expression: remembered_pride
+    on_enter:
+      - add_claim: claim_arkady_heating_winter
+      - adjust_patron:
+          patron: arkady
+          trust: 1
+      - advance_minutes: 3
+    choices:
+      - id: ask_what_it_cost
+        text_key: choices.ask_what_it_cost
+        effects:
+          - goto: arkady_cost_was_not_mine
+      - id: acknowledge_specific_good
+        text_key: choices.acknowledge_specific_good
+        effects:
+          - adjust_patron:
+              patron: arkady
+              trust: 2
+          - return_to_free_roam: true
+
+  - id: lev_reliability_interrupts
+    speaker: lev
+    text_key: dialogue.lev.reliability_was_simple
+    pose: char_lev_pose_lean_in
+    expression: dry_anger
+    interruption: hard
+    on_enter:
+      - add_claim: claim_lev_arkady_blocked_promotion
+      - add_knowledge:
+          id: knowledge_lev_promotion_accusation
+          level: direct
+          sourcePatronId: lev
+      - adjust_relationship:
+          from: lev
+          to: arkady
+          value: -4
+      - advance_minutes: 2
+    choices:
+      - id: ask_arkady_directly
+        text_key: choices.ask_arkady_about_lev
+        effects:
+          - goto: arkady_procedural_denial
+      - id: stop_public_accusation
+        text_key: choices.stop_public_accusation
+        effects:
+          - adjust_patron:
+              patron: lev
+              trust: -1
+          - adjust_patron:
+              patron: arkady
+              trust: 1
+          - return_to_free_roam: true
+      - id: silence
+        text_key: common.silence
+        effects:
+          - goto: arkady_procedural_denial
+
+  - id: arkady_procedural_denial
+    speaker: arkady
+    text_key: dialogue.arkady.personnel_decisions_collective
+    pose: char_arkady_pose_signature_papers
+    expression: procedural_defense
+    on_enter:
+      - add_claim: claim_arkady_personnel_decision_collective
+      - mark_contradiction:
+          claim: claim_arkady_personnel_decision_collective
+          with: claim_lev_arkady_blocked_promotion
+      - adjust_patron:
+          patron: arkady
+          privatePressure: 4
+          agitation: 3
+      - advance_minutes: 2
+    choices:
+      - id: ask_did_you_sign
+        text_key: choices.ask_did_you_sign
+        effects:
+          - goto: arkady_signed_but_not_alone
+      - id: defer_until_private
+        text_key: choices.defer_until_private
+        effects:
+          - set_flag: lev_promotion_private_followup_available
+          - return_to_free_roam: true
+
+  - id: arkady_signed_but_not_alone
+    speaker: arkady
+    text_key: dialogue.arkady.signed_but_not_alone
+    pose: char_arkady_pose_seated_listen
+    expression: exposed
+    on_enter:
+      - add_claim: claim_arkady_signed_lev_decision
+      - mark_contradiction:
+          claim: claim_arkady_signed_lev_decision
+          with: claim_arkady_personnel_decision_collective
+      - adjust_patron:
+          patron: arkady
+          trust: -1
+          privatePressure: 5
+      - append_epilogue_fact: arkady_signature_witnessed
+      - advance_minutes: 2
+    choices:
+      - id: do_not_absolve
+        text_key: choices.you_still_signed
+        effects:
+          - adjust_patron:
+              patron: arkady
+              agitation: 2
+          - return_to_free_roam: true
+      - id: ask_what_he_feared
+        text_key: choices.ask_what_he_feared
+        effects:
+          - open_topic: arkady_private_fear
+          - return_to_free_roam: true
+
+  - id: arkady_uses_collective_voice
+    speaker: arkady
+    text_key: dialogue.arkady.we_did_what_was_possible
+    pose: char_arkady_pose_lean_back
+    expression: closed
+    on_enter:
+      - set_flag: arkady_collective_voice_noted
+      - advance_minutes: 1
+    choices:
+      - id: note_pronoun
+        text_key: choices.you_said_we
+        requires:
+          player_background_in:
+            - film
+            - interpreter
+        effects:
+          - adjust_patron:
+              patron: arkady
+              privatePressure: 2
+          - return_to_free_roam: true
+      - id: return_to_service
+        text_key: choices.return_to_service
+        effects:
+          - return_to_free_roam: true
+
+  - id: sasha_wallet_observation
+    speaker: sasha
+    text_key: dialogue.sasha.wallet_too_full
+    pose: char_sasha_pose_observe
+    expression: attentive
+    on_enter:
+      - add_knowledge:
+          id: knowledge_arkady_wallet_unusual_contents
+          level: direct
+          sourceEventId: observation_arkady_wallet
+      - advance_minutes: 1
+    choices:
+      - id: ask_about_wallet
+        text_key: choices.ask_about_wallet
+        effects:
+          - adjust_patron:
+              patron: arkady
+              privatePressure: 3
+          - set_flag: arkady_wallet_questioned
+          - return_to_free_roam: true
+      - id: keep_observation_private
+        text_key: choices.keep_observation_private
+        effects:
+          - set_flag: sasha_kept_wallet_observation_private
+          - return_to_free_roam: true

@@ -1,0 +1,20 @@
+{
+  "asset_id": "prop_metal_ashtray_v001",
+  "status": "review",
+  "asset_type": "table_prop",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "docs/ASSET_MANIFEST.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 14, "height": 8 },
+  "anchor": {
+    "id": "base-center",
+    "x": 7,
+    "y": 7,
+    "note": "local sprite-space contact point at the base of the outer rim ellipse; reused across all tables."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Flat round metal ashtray, concentric ellipses (soot_0 contour, soot_3 lit rim, soot_2 rim shade/inner wall, soot_1 bowl recess), soot_4 highlight arc + two cigarette-rest notches + ash hint. v001 first pass used layer()+inlineOutline() at 6px tall and the auto-outline pass ate the whole interior (too flat an aspect ratio); rebuilt as direct concentric ellipses at 8px tall. Palette-clean via check-palette.ts. Inspected at 8x. No HISTORICAL_LEDGER entry — flag for historian pass."
+}

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" shape-rendering="crispEdges">
+  <!-- env_bar_seat_back: chair parts BEHIND seated characters, all 18 seat anchors (native = blockout/3).
+       Uniform cast scale: seat plane at anchor y, floor at anchor y+24, backrest top ~anchor y-24.
+       Tabletop ellipses mask out chair parts that the tables (bg_mid) already occlude. -->
+  <defs>
+    <g id="chair_n"><!-- north seats: full backrest + seat + rear legs -->
+      <rect x="-9" y="-24" width="18" height="1" fill="#131114"/>
+      <rect x="-9" y="-23" width="18" height="3" fill="#46301c"/>
+      <rect x="-8" y="-20" width="2" height="19" fill="#46301c"/>
+      <rect x="6" y="-20" width="2" height="19" fill="#46301c"/>
+      <rect x="-11" y="-2" width="22" height="1" fill="#131114"/>
+      <rect x="-11" y="-1" width="22" height="4" fill="#46301c"/>
+      <rect x="-9" y="3" width="2" height="21" fill="#2b1d12"/>
+      <rect x="7" y="3" width="2" height="21" fill="#2b1d12"/>
+    </g>
+    <g id="chair_e"><!-- east seats: side view backrest on outer (right) side -->
+      <rect x="5" y="-25" width="8" height="1" fill="#131114"/>
+      <rect x="5" y="-24" width="8" height="3" fill="#46301c"/>
+      <rect x="8" y="-21" width="3" height="20" fill="#46301c"/>
+      <rect x="-11" y="-2" width="22" height="1" fill="#131114"/>
+      <rect x="-11" y="-1" width="22" height="4" fill="#46301c"/>
+      <rect x="-9" y="3" width="2" height="21" fill="#2b1d12"/>
+      <rect x="7" y="3" width="2" height="21" fill="#2b1d12"/>
+    </g>
+    <g id="chair_w"><!-- west seats: side view backrest on outer (left) side -->
+      <rect x="-13" y="-25" width="8" height="1" fill="#131114"/>
+      <rect x="-13" y="-24" width="8" height="3" fill="#46301c"/>
+      <rect x="-11" y="-21" width="3" height="20" fill="#46301c"/>
+      <rect x="-11" y="-2" width="22" height="1" fill="#131114"/>
+      <rect x="-11" y="-1" width="22" height="4" fill="#46301c"/>
+      <rect x="-9" y="3" width="2" height="21" fill="#2b1d12"/>
+      <rect x="7" y="3" width="2" height="21" fill="#2b1d12"/>
+    </g>
+    <g id="chair_sb"><!-- south seats: rear part only (backrest faces camera -> furniture_front) -->
+      <rect x="-11" y="-2" width="22" height="1" fill="#131114"/>
+      <rect x="-11" y="-1" width="22" height="4" fill="#46301c"/>
+      <rect x="-9" y="3" width="2" height="21" fill="#2b1d12"/>
+      <rect x="7" y="3" width="2" height="21" fill="#2b1d12"/>
+    </g>
+    <g id="chair_front_empty"><!-- front legs + seat front edge for an UNOCCUPIED east/west seat.
+         Lives in seat_back (not furniture_front) when a nearer seated figure would otherwise
+         get the legs painted through their torso (QA P0: seat-08 leg through Nikolai/seat-09). -->
+      <rect x="-11" y="3" width="22" height="2" fill="#46301c"/>
+      <rect x="-11" y="5" width="22" height="1" fill="#131114"/>
+      <rect x="-11" y="4" width="2" height="21" fill="#2b1d12"/>
+      <rect x="9" y="4" width="2" height="21" fill="#2b1d12"/>
+    </g>
+    <mask id="mtables" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="360">
+      <rect x="0" y="0" width="640" height="360" fill="#ffffff"/>
+      <ellipse cx="310" cy="190" rx="35" ry="11" fill="#000000"/>
+      <ellipse cx="440" cy="200" rx="37" ry="11" fill="#000000"/>
+      <ellipse cx="397" cy="253" rx="45" ry="14" fill="#000000"/>
+      <ellipse cx="240" cy="247" rx="43" ry="14" fill="#000000"/>
+      <ellipse cx="510" cy="253" rx="45" ry="14" fill="#000000"/>
+    </mask>
+  </defs>
+
+  <g mask="url(#mtables)">
+    <!-- table A -->
+    <use href="#chair_n" x="307" y="176"/><!-- pushed in: seat bar behind rim, no floating legs -->
+    <use href="#chair_e" x="343" y="190"/>
+    <use href="#chair_sb" x="310" y="217"/>
+    <use href="#chair_w" x="277" y="190"/>
+    <!-- table B -->
+    <use href="#chair_n" x="437" y="188"/>
+    <use href="#chair_e" x="475" y="200"/>
+    <use href="#chair_sb" x="440" y="230"/>
+    <use href="#chair_w" x="405" y="200"/>
+    <use href="#chair_front_empty" x="405" y="200"/>
+    <!-- table C -->
+    <use href="#chair_n" x="397" y="230"/>
+    <use href="#chair_e" x="443" y="257"/>
+    <use href="#chair_w" x="350" y="257"/>
+    <!-- table D -->
+    <use href="#chair_n" x="240" y="228"/>
+    <use href="#chair_e" x="283" y="247"/>
+    <use href="#chair_sb" x="240" y="280"/>
+    <use href="#chair_w" x="197" y="247"/>
+    <!-- table E -->
+    <use href="#chair_n" x="510" y="236"/>
+    <use href="#chair_e" x="555" y="253"/>
+    <use href="#chair_w" x="465" y="253"/>
+  </g>
+</svg>

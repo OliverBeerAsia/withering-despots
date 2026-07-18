@@ -1,0 +1,38 @@
+{
+  "asset_id": "char_lev_sheet_v001",
+  "status": "review",
+  "canonical_character": "lev",
+  "source_prompt": "art/source/char/lev.ts",
+  "reference_assets": [
+    "art/direction/character_cards/lev.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md",
+    "art/source/char/arkady.ts"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 24, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 80,
+    "head_px": 15,
+    "shoulders_px": 19,
+    "seated_crown_to_floor_px": 60,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 24
+  },
+  "review_notes": "v001: pilot template (arkady.ts) applied to the lev card. Shortest of cast, permanent stoop baked into every pose (standing torso carries a -3px shoulder lean eased to 0 at the hip, plus head offset well forward of the chest line); seated torso center shifted 2px forward of the arkady baseline (CX=24 vs 26) per card 'perched forward of seat center by 2 px'. Head is a hand-authored 13x15 ASCII map: bald dome (flesh_2 highlight) with an untidy horseshoe fringe (soot_4/soot_3) at the back/sides only, prominent ear as a genuine silhouette protrusion at the occiput edge, large round glasses rendered as two distinct cyan_0 lenses with a soot_0 bridge (glasses never removed in any pose — base map bakes them in), short fleshy upturned nose jutting at the front edge, soft round small chin. Skin planes flesh_1 base BALANCED with generous flesh_0 shadow (ruddy-warm, not inverted like arkady) with flesh_2 glints on crown/nose/cheek per card. Jacket worn permanently open (never buttoned per card) with a visible cream/cream_1 shirt strip the full torso length; sleeves rendered bare (flesh) from elbow to wrist in every pose (rolled to the elbow, never rolled down); chest-pocket screwdriver (soot_4 + red_1) and a jacket pocket bulge (olive_0) stamped on the torso. Signature pose draws a small held pocket radio (soot_2 body, soot_4 dial, soot_0 antenna stub) at the near hand raised to the ear — a personal held item baked into this one pose, not a table-anchored prop. Palette-clean via check-palette.ts on all 11 PNGs (9 poses + sheet + silhouette); inspected at 8x/16x."
+}

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "id": "phase-1-graybox",
+  "logicalStage": {
+    "width": 1920,
+    "height": 1080,
+    "horizonY": 360,
+    "subtitleSafeY": 840
+  },
+  "roomMeters": {
+    "width": 7.2,
+    "depth": 5.8,
+    "height": 2.7
+  },
+  "geometry": {
+    "polygons": [
+      {
+        "id": "rear-wall",
+        "role": "room",
+        "points": [240, 150, 1680, 150, 1680, 620, 240, 620]
+      },
+      {
+        "id": "left-wall",
+        "role": "room",
+        "points": [0, 0, 240, 150, 240, 620, 0, 1080]
+      },
+      {
+        "id": "right-wall",
+        "role": "room",
+        "points": [1920, 0, 1680, 150, 1680, 620, 1920, 1080]
+      },
+      {
+        "id": "floor-plane",
+        "role": "room",
+        "points": [240, 620, 1680, 620, 1920, 1080, 0, 1080]
+      },
+      {
+        "id": "service-corridor",
+        "role": "service",
+        "points": [700, 270, 875, 275, 875, 620, 700, 620]
+      },
+      {
+        "id": "service-door",
+        "role": "door",
+        "points": [740, 305, 840, 308, 840, 620, 740, 620]
+      },
+      {
+        "id": "street-entrance",
+        "role": "door",
+        "points": [1610, 320, 1706, 297, 1706, 654, 1610, 620]
+      },
+      {
+        "id": "counter-top",
+        "role": "counter",
+        "points": [285, 490, 735, 505, 765, 690, 250, 705]
+      },
+      {
+        "id": "counter-front",
+        "role": "counter",
+        "points": [250, 705, 765, 690, 765, 815, 215, 840]
+      }
+    ]
+  },
+  "verbs": ["observe", "speak", "serve", "tune", "wait"],
+  "anchors": [
+    { "id": "anchor-room-center", "kind": "room", "x": 960, "y": 540 },
+    { "id": "anchor-counter", "kind": "fixture", "x": 420, "y": 560 },
+    { "id": "anchor-service-door", "kind": "door", "x": 790, "y": 410 },
+    { "id": "anchor-entrance", "kind": "door", "x": 1700, "y": 560 },
+    { "id": "anchor-television", "kind": "prop", "x": 1490, "y": 210 },
+    { "id": "anchor-telephone", "kind": "prop", "x": 540, "y": 390 },
+    { "id": "anchor-table-a", "kind": "table", "x": 930, "y": 570 },
+    { "id": "anchor-table-b", "kind": "table", "x": 1320, "y": 600 },
+    { "id": "anchor-table-c", "kind": "table", "x": 1190, "y": 760 },
+    { "id": "anchor-table-d", "kind": "table", "x": 720, "y": 740 },
+    { "id": "anchor-table-e", "kind": "table", "x": 1530, "y": 760 },
+    { "id": "anchor-patron-north", "kind": "patron", "x": 920, "y": 470 },
+    { "id": "anchor-patron-east", "kind": "patron", "x": 1310, "y": 510 },
+    { "id": "anchor-patron-south", "kind": "patron", "x": 1190, "y": 690 },
+    { "id": "anchor-patron-west", "kind": "patron", "x": 720, "y": 650 },
+    { "id": "anchor-sasha-bar", "kind": "standing", "x": 430, "y": 500 },
+    { "id": "anchor-sasha-television", "kind": "standing", "x": 1380, "y": 660 },
+    { "id": "anchor-sasha-telephone", "kind": "standing", "x": 610, "y": 530 },
+    { "id": "anchor-walk-center", "kind": "walk", "x": 1000, "y": 790 },
+    { "id": "anchor-walk-east", "kind": "walk", "x": 1450, "y": 720 },
+    { "id": "anchor-walk-west", "kind": "walk", "x": 620, "y": 750 },
+    { "id": "anchor-seat-01", "kind": "seat", "x": 920, "y": 500 },
+    { "id": "anchor-seat-02", "kind": "seat", "x": 1030, "y": 570 },
+    { "id": "anchor-seat-03", "kind": "seat", "x": 930, "y": 650 },
+    { "id": "anchor-seat-04", "kind": "seat", "x": 830, "y": 570 },
+    { "id": "anchor-seat-05", "kind": "seat", "x": 1310, "y": 540 },
+    { "id": "anchor-seat-06", "kind": "seat", "x": 1425, "y": 600 },
+    { "id": "anchor-seat-07", "kind": "seat", "x": 1320, "y": 690 },
+    { "id": "anchor-seat-08", "kind": "seat", "x": 1215, "y": 600 },
+    { "id": "anchor-seat-09", "kind": "seat", "x": 1190, "y": 690 },
+    { "id": "anchor-seat-10", "kind": "seat", "x": 1330, "y": 770 },
+    { "id": "anchor-seat-11", "kind": "seat", "x": 1050, "y": 770 },
+    { "id": "anchor-seat-12", "kind": "seat", "x": 720, "y": 650 },
+    { "id": "anchor-seat-13", "kind": "seat", "x": 850, "y": 740 },
+    { "id": "anchor-seat-14", "kind": "seat", "x": 720, "y": 840 },
+    { "id": "anchor-seat-15", "kind": "seat", "x": 590, "y": 740 },
+    { "id": "anchor-seat-16", "kind": "seat", "x": 1530, "y": 690 },
+    { "id": "anchor-seat-17", "kind": "seat", "x": 1665, "y": 760 },
+    { "id": "anchor-seat-18", "kind": "seat", "x": 1395, "y": 760 }
+  ],
+  "routes": [
+    {
+      "id": "route-bar-to-television",
+      "fromAnchorId": "anchor-sasha-bar",
+      "toAnchorId": "anchor-sasha-television",
+      "waypointAnchorIds": ["anchor-walk-west", "anchor-walk-center", "anchor-walk-east"]
+    },
+    {
+      "id": "route-television-to-telephone",
+      "fromAnchorId": "anchor-sasha-television",
+      "toAnchorId": "anchor-sasha-telephone",
+      "waypointAnchorIds": ["anchor-walk-east", "anchor-walk-center", "anchor-walk-west"]
+    },
+    {
+      "id": "route-television-to-bar",
+      "fromAnchorId": "anchor-sasha-television",
+      "toAnchorId": "anchor-sasha-bar",
+      "waypointAnchorIds": ["anchor-walk-east", "anchor-walk-center", "anchor-walk-west"]
+    },
+    {
+      "id": "route-telephone-to-bar",
+      "fromAnchorId": "anchor-sasha-telephone",
+      "toAnchorId": "anchor-sasha-bar",
+      "waypointAnchorIds": ["anchor-walk-west"]
+    }
+  ],
+  "hotspots": [
+    {
+      "id": "room",
+      "anchorId": "anchor-room-center",
+      "label": "Observe room",
+      "supportedVerbs": ["observe"],
+      "x": 90,
+      "y": 90,
+      "width": 1740,
+      "height": 730,
+      "spatialOrder": 0
+    },
+    {
+      "id": "patron-north",
+      "anchorId": "anchor-patron-north",
+      "label": "Observe north table patron",
+      "supportedVerbs": ["observe"],
+      "x": 840,
+      "y": 385,
+      "width": 160,
+      "height": 235,
+      "spatialOrder": 1
+    },
+    {
+      "id": "patron-east",
+      "anchorId": "anchor-patron-east",
+      "label": "Observe east table patron",
+      "supportedVerbs": ["observe", "speak"],
+      "x": 1265,
+      "y": 420,
+      "width": 170,
+      "height": 240,
+      "spatialOrder": 2
+    },
+    {
+      "id": "patron-west",
+      "anchorId": "anchor-patron-west",
+      "label": "Observe west table patron",
+      "supportedVerbs": ["observe"],
+      "x": 630,
+      "y": 560,
+      "width": 180,
+      "height": 250,
+      "spatialOrder": 3
+    },
+    {
+      "id": "patron-south",
+      "anchorId": "anchor-patron-south",
+      "label": "Observe south table patron",
+      "supportedVerbs": ["observe", "serve"],
+      "x": 1075,
+      "y": 595,
+      "width": 180,
+      "height": 245,
+      "spatialOrder": 4
+    },
+    {
+      "id": "television",
+      "anchorId": "anchor-television",
+      "label": "Television",
+      "supportedVerbs": ["tune"],
+      "x": 1390,
+      "y": 125,
+      "width": 210,
+      "height": 170,
+      "spatialOrder": 5
+    },
+    {
+      "id": "telephone",
+      "anchorId": "anchor-telephone",
+      "label": "Telephone",
+      "supportedVerbs": [],
+      "x": 475,
+      "y": 325,
+      "width": 135,
+      "height": 105,
+      "spatialOrder": 6
+    }
+  ]
+}

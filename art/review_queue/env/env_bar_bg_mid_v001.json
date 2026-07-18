@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_bg_mid_v001",
+  "status": "review",
+  "source_prompt": "art/source/env/bg_mid.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "640x360 native; geometry traced from blockout (logical/3, horizon y=120); palette-clean via check-palette.ts; inspected composite at 3x and 8x crops. Counter (wood_2 top, teal_3 fluorescent back edge, wood_3 sheen, dark wood_1 front w/ panels + scuffed kick), back-counter, phone shelf, service+street door leaves (cyan_0 streetlight streak), TV housing with transparent screen aperture x471-520 y59-88 + cyan_0 rim, 5 tables (C/D older/darker, D wire-repaired leg, soot_0 burns). Transparent layer."
+}

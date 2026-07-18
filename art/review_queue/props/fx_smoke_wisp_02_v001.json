@@ -1,0 +1,21 @@
+{
+  "asset_id": "fx_smoke_wisp_02_v001",
+  "status": "review",
+  "asset_type": "fx_overlay",
+  "source_prompt": "art/source/props/fx.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/review_queue/props/fx_smoke_wisp_01_v001.png",
+    "art/review_queue/props/fx_smoke_wisp_03_v001.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 14, "height": 26 },
+  "anchor": {
+    "id": "base-center",
+    "x": 7,
+    "y": 25,
+    "note": "same construction as fx_smoke_wisp_01, different seed/drift (+1,+2px) for asynchronous looping."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Layer: atmosphere. See fx_smoke_wisp_01 sidecar for the dither/opacity approach. Palette-clean via check-palette.ts. Inspected at 8x."
+}

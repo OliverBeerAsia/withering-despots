@@ -1,0 +1,21 @@
+{
+  "asset_id": "prop_telephone_v001",
+  "status": "review",
+  "asset_type": "table_prop",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/source/env/bg_mid.svg",
+    "content/graybox-layout.json"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 15, "height": 15 },
+  "anchor": {
+    "id": "base-center",
+    "x": 7,
+    "y": 13,
+    "note": "local sprite-space contact point at the base of the phone body; scene placement is the telephone shelf in env_bar_bg_mid (native x168-191,y122-130, ~23px wide) and anchor-telephone (content/graybox-layout.json, native ~180,130)."
+  },
+  "occlusion": { "behind": null, "in_front_of": "env_bar_bg_mid" },
+  "review_notes": "Dark bakelite desk phone: soot_1 base body (soot_2 lit top edge), soot_3 dial disc with soot_0 finger holes (no legible numerals per ART_BIBLE §7), handset resting on two soot_2 cradle prongs, soot_0 zigzag cord. Sized to fit the ~23px-wide shelf. Palette-clean via check-palette.ts. Inspected at 8x."
+}

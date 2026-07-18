@@ -1,0 +1,18 @@
+{
+  "asset_id": "fx_tv_light_mask_v003",
+  "status": "review",
+  "asset_type": "fx_mask",
+  "source_prompt": ".prompts/runs/2026-07-18_fx_tv_light_mask_v003.md",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/source/env/bg_mid.svg",
+    "art/direction/environment_notes.md",
+    "art/palette/wd-palette-v1.json",
+    "art/review_queue/props/fx_tv_light_mask_v002.png"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 640, "height": 360 },
+  "anchor": null,
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Layer: light_overlays. Deterministic v003 replaces the v002 projector cone with three disconnected local responses: a one-pixel housing rim, a shallow wall bounce ending above the character plane, and a 34 by 8 pixel table-B crescent left of Lev's x475 seat anchor. No global dim, connecting beam, dither, blur, text, or geometry changes. Palette check and twelve integrated Phase 2 screenshots pass at both canonical viewports on 2026-07-18. Keep in review_queue pending the human promotion checkpoint."
+}

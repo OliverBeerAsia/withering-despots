@@ -1,0 +1,20 @@
+{
+  "asset_id": "prop_faceted_glass_medium_v001",
+  "status": "review",
+  "asset_type": "table_prop",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "docs/ASSET_MANIFEST.md"
+  ],
+  "historical_ledger_ids": ["PROP-001"],
+  "frame": { "width": 11, "height": 15 },
+  "anchor": {
+    "id": "base-center",
+    "x": 5,
+    "y": 14,
+    "note": "local sprite-space contact point (bottom of the base foot ring); reused across tables A-E, not a fixed scene coordinate."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Same construction as prop_faceted_glass_small, scaled up (top half-width 4.2 vs 3.2, 10 body rows vs 8). Facet bands soot_4/soot_3/soot_2, cream_3 rim glint, soot_1 base foot. Palette-clean via check-palette.ts. Inspected at 8x. PROP-001 ledger entry is 'unverified' — same historian follow-up as the small glass."
+}

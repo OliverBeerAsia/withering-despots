@@ -1,0 +1,13 @@
+{
+  "asset_id": "env_bar_bg_far_v002",
+  "status": "approved",
+  "source_prompt": "art/source/env/bg_far.svg",
+  "reference_assets": [
+    "art/blockout/bar_perspective.svg",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": null,
+  "review_notes": "v002 finisher rework (2026-07-17 QA): counter re-read as counter (clutter: taps/glasses/rag/tray, grain seams, taller constant-height panelled front face, left end seam), bar-height stools, unified shortened table pedestals (+moved floor shadows), pushed-in unoccupied north chairs, seat-08 chair front moved behind seated figures, hard-edged pixel clock, grounded phone-shelf brackets. Palette-clean via check-palette.ts; footprint and staff waist-cut edge unchanged from blockout."
+}

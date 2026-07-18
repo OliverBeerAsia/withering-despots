@@ -1,0 +1,21 @@
+{
+  "asset_id": "prop_factory_photograph_v001",
+  "status": "review",
+  "asset_type": "character_prop",
+  "canonical_character": "gennady",
+  "source_prompt": "art/source/props/bar_props.ts",
+  "reference_assets": [
+    "art/palette/wd-palette-v1.json",
+    "art/direction/character_cards/gennady.md"
+  ],
+  "historical_ledger_ids": [],
+  "frame": { "width": 11, "height": 9 },
+  "anchor": {
+    "id": "base-center",
+    "x": 5,
+    "y": 8,
+    "note": "local sprite-space contact point when laid on a table; Gennady keeps it in his shirt pocket per the design card, so a hand-held/pocket anchor will need authoring alongside a pose that pulls it out."
+  },
+  "occlusion": { "behind": null, "in_front_of": null },
+  "review_notes": "Per gennady.md: 'the photograph stays creased, never crisp' — b/w brigade group in front of a lathe row, rendered as pure abstract value shapes (soot_0 tiny figure silhouettes, soot_1 lathe-row mass, soot_2 image field) inside a cream_3 paper mat, soot_0 contour, diagonal soot_1 crease, lifted cream_1/cream_0 corner fold. No legible faces/detail per ART_BIBLE prop-separation rule. Palette-clean via check-palette.ts. Inspected at 8x (pixel dump cross-checked, not just visual read). No HISTORICAL_LEDGER entry — flag for historian pass."
+}

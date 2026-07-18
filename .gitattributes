@@ -1,0 +1,10 @@
+* text=auto
+
+*.png binary
+*.ttf binary
+
+# Several design templates use Markdown hard breaks deliberately.
+*.md whitespace=-trailing-space
+
+# Preserve the upstream font licence text without whitespace diagnostics.
+public/fonts/**/OFL.txt -whitespace

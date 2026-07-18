@@ -1,0 +1,38 @@
+{
+  "asset_id": "char_gennady_sheet_v001",
+  "status": "pending_review",
+  "canonical_character": "gennady",
+  "source_prompt": "art/source/char/gennady.ts",
+  "reference_assets": [
+    "art/direction/character_cards/gennady.md",
+    "art/direction/character_template.md",
+    "art/source/char/arkady.ts",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 84,
+    "head_px": 15,
+    "shoulders_px": 24,
+    "seated_crown_to_floor_px": 64,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "v001 initial package. Structural template: arkady pilot (character_template.md). Card deviations: no jacket — torso built from vest (teal_1/teal_0) with a wide open-collar shirt strip (cream_3/cream_2/cream_1) instead of a buttoned suit+tie; forearms are bare skin (flesh_2-lit, w=5, thickest of the cast) below a short rolled cream cuff stub at the elbow, never suit-colored sleeve fabric ('sleeves rolled hard above the elbow ... breaks the dark mass at the elbows'); permanent forward lean baked in as a lean baseline (BASE_LEAN=-2) on every seated pose, with lean_in/lean_back/signature given distinct (non-additive) lean values so the 7 poses read as clearly separate silhouettes; right hand (=nearArm, the gesturing/table hand) carries the old shop injury (index finger 1px short/bent, soot_1 knuckle scar) integrated directly into the hand block in every pose that shows it; signature pose is a full slap+point gesture (flat near/right hand at table height, far/left hand raised clear of the shoulder pointing forward with the wooden folding ruler prop) rather than a single raised finger; standing pose untucks the shirt 2px on the right per the card's construction note; a small creased factory-photo pocket detail is stamped on every torso. Torso taper: two-phase linear (shoulder half=12 -> waist half=10 -> solid-belly half=11), shoulders kept the widest point so the silhouette reads 'wider at the top, tipped forward' per the card's dominant-silhouette note, not a bottom-heavy bell. Rework notes from the self-gate loop: (1) first pass had a wavy/zigzag torso taper from a secondary per-row 'back spread' offset — removed, taper is now a clean two-segment curve matching arkady's suit-taper smoothness; (2) the right-hand injury mark originally floated as a disconnected fleck 2px off the hand — moved into the hand-drawing function so the bent index finger is drawn flush against the rest of the block; (3) standing pose's belt was a full-width 2-row wood bar that flattened the vest hem — reduced to a 2px buckle glint; (4) signature pose's raised (far) arm shoulder anchor originally sat inside the collar and produced an unreadable hand cluster — moved the shoulder joint away from the collar; (5) exhausted/lean_back initially used small additive lean deltas (1-3px) that read almost identically to seated_listen at game scale — exhausted now drops the shoulders 3px and bows the head 6px+3px, lean_back uses a distinct positive lean (+3, his one real recline) instead of BASE_LEAN+delta. Verified: palette-clean via check-palette.ts on all 9 pose PNGs + sheet + silhouette; inspected at 8x full sheet, 16x per-pose (seated_listen, lean_in, lean_back, exhausted, signature, standing, seated_talk), 24x head crop; six-silhouette check run against the approved arkady silhouette — clearly distinct (Gennady: short, broad wedge torso, forward-leaning, thick extended forearm vs Arkady: tall, narrow, vertical, arms tucked)."
+}

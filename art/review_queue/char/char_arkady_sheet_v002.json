@@ -1,0 +1,37 @@
+{
+  "asset_id": "char_arkady_sheet_v002",
+  "status": "review",
+  "canonical_character": "arkady",
+  "source_prompt": "art/source/char/arkady.ts",
+  "reference_assets": [
+    "art/direction/character_cards/arkady.md",
+    "art/direction/character_template.md",
+    "art/palette/wd-palette-v1.json",
+    "art/direction/environment_notes.md"
+  ],
+  "historical_ledger_ids": [],
+  "anchor": { "x": 26, "y": 93 },
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": [
+    "seated_listen",
+    "seated_listen_breath",
+    "seated_listen_blink",
+    "seated_talk",
+    "lean_in",
+    "lean_back",
+    "standing",
+    "signature",
+    "exhausted"
+  ],
+  "metrics": {
+    "standing_height_px": 90,
+    "head_px": 15,
+    "shoulders_px": 17,
+    "seated_crown_to_floor_px": 68,
+    "foot_line_y": 93,
+    "seat_plane_y": 69,
+    "standing_center_x": 24,
+    "seated_torso_center_x": 26
+  },
+  "review_notes": "v002 REWORK (loop 1 of 1): skin plane distribution inverted to match card Identity — palest of cast. flesh_0 is now the dominant face plane, flesh_1 reduced to a narrow lit strip on the front profile edge, shadow edges toward hair/ear/jaw cooled with soot_3, flesh_2 kept to 2 px (forehead scalp + nose ridge). Measured head region (seated_listen, y26-41): flesh_0=44, flesh_1=9, soot_3=16 (incl. hair shade), flesh_2=2 (v001 was flesh_1=50 / flesh_0=13). Neck and hand blocks also flesh_0-dominant; blink/hooded lids now soot_3 (flesh_0 lids would vanish on the flesh_0 face). Geometry, metrics, poses, and anchor unchanged from v001. Palette-clean via check-palette.ts; inspected at 8x sheet + 16x head crop."
+}

@@ -1,0 +1,2491 @@
+{
+  "schemaVersion": 1,
+  "id": "phase-2-sample",
+  "metadata": {
+    "status": "sample_not_final_dialogue",
+    "startMinute": 1165,
+    "endMinute": 1185,
+    "requiredLocales": ["en"],
+    "historicalReviewRequired": true,
+    "culturalReviewRequired": true,
+    "nativeRussianDialogueReviewRequired": true
+  },
+  "characters": [
+    {
+      "id": "sasha",
+      "nameKey": "characters.sasha",
+      "role": "player",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 0,
+        "agitation": 4,
+        "publicCertainty": 20,
+        "privatePressure": 8
+      }
+    },
+    {
+      "id": "galina",
+      "nameKey": "characters.galina",
+      "role": "manager",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 4,
+        "agitation": 5,
+        "publicCertainty": 45,
+        "privatePressure": 10
+      }
+    },
+    {
+      "id": "arkady",
+      "nameKey": "characters.arkady",
+      "role": "patron",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 0,
+        "agitation": 14,
+        "publicCertainty": 82,
+        "privatePressure": 18
+      }
+    },
+    {
+      "id": "lev",
+      "nameKey": "characters.lev",
+      "role": "patron",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 1,
+        "agitation": 10,
+        "publicCertainty": 70,
+        "privatePressure": 16
+      }
+    },
+    {
+      "id": "nikolai",
+      "nameKey": "characters.nikolai",
+      "role": "patron",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 0,
+        "agitation": 12,
+        "publicCertainty": 76,
+        "privatePressure": 20
+      }
+    },
+    {
+      "id": "gennady",
+      "nameKey": "characters.gennady",
+      "role": "patron",
+      "historicalStatus": "fictional-composite",
+      "initial": {
+        "present": true,
+        "trust": 1,
+        "agitation": 16,
+        "publicCertainty": 74,
+        "privatePressure": 22
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim_gennady_workers_outlast_bosses",
+      "speakerId": "gennady",
+      "context": "public",
+      "repeatable": true,
+      "socialRisk": "low",
+      "contradicts": [],
+      "historicalLedgerIds": []
+    },
+    {
+      "id": "claim_arkady_emergency_may_be_necessary",
+      "speakerId": "arkady",
+      "context": "public",
+      "repeatable": true,
+      "socialRisk": "low",
+      "contradicts": ["claim_arkady_opposed_from_start"],
+      "historicalLedgerIds": []
+    },
+    {
+      "id": "claim_arkady_opposed_from_start",
+      "speakerId": "arkady",
+      "context": "public",
+      "repeatable": true,
+      "socialRisk": "low",
+      "contradicts": ["claim_arkady_emergency_may_be_necessary"],
+      "historicalLedgerIds": []
+    },
+    {
+      "id": "claim_gennady_concealed_shop_accident",
+      "speakerId": "gennady",
+      "context": "private",
+      "repeatable": true,
+      "socialRisk": "high",
+      "contradicts": [],
+      "historicalLedgerIds": []
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter_sample_room_rewrites",
+      "titleKey": "chapters.sample_room_rewrites",
+      "startsAt": 1165
+    }
+  ],
+  "events": [
+    {
+      "id": "event_sample_attention",
+      "kind": "broadcast",
+      "dueMinute": 1182,
+      "priority": 100,
+      "effects": [
+        {
+          "type": "set-event-status",
+          "eventId": "event_sample_attention",
+          "status": "announced"
+        },
+        { "type": "set-object-state", "objectId": "television", "state": "bulletin" },
+        { "type": "set-object-state", "objectId": "radio_music", "state": "silent" },
+        {
+          "type": "open-attention",
+          "windowId": "attention_sample_three_way"
+        }
+      ],
+      "historicalLedgerIds": [],
+      "wordingPolicy": "original-fictionalized"
+    }
+  ],
+  "attentionWindows": [
+    {
+      "id": "attention_sample_three_way",
+      "eventId": "event_sample_attention",
+      "promptKey": "attention.sample.prompt",
+      "selectionMode": "primary-plus-fragment",
+      "timeoutMode": "none",
+      "offers": [
+        {
+          "id": "offer_sample_television",
+          "targetId": "television",
+          "labelKey": "attention.sample.television",
+          "gotoNodeId": "sample_attention_tv_direct",
+          "outcomes": [
+            {
+              "offerId": "offer_sample_television",
+              "outcome": "direct",
+              "knowledgeId": "knowledge_sample_tv_signal",
+              "sourceEventId": "event_sample_attention"
+            },
+            {
+              "offerId": "offer_sample_arkady_rewrite",
+              "outcome": "fragment",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "sourceCharacterId": "arkady"
+            },
+            {
+              "offerId": "offer_sample_galina_aside",
+              "outcome": "missed",
+              "knowledgeId": "knowledge_galina_aside",
+              "sourceCharacterId": "galina"
+            }
+          ]
+        },
+        {
+          "id": "offer_sample_arkady_rewrite",
+          "targetId": "arkady",
+          "labelKey": "attention.sample.arkady",
+          "gotoNodeId": "sample_attention_arkady_direct",
+          "outcomes": [
+            {
+              "offerId": "offer_sample_television",
+              "outcome": "fragment",
+              "knowledgeId": "knowledge_sample_tv_signal",
+              "sourceEventId": "event_sample_attention"
+            },
+            {
+              "offerId": "offer_sample_arkady_rewrite",
+              "outcome": "direct",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "sourceCharacterId": "arkady"
+            },
+            {
+              "offerId": "offer_sample_galina_aside",
+              "outcome": "missed",
+              "knowledgeId": "knowledge_galina_aside",
+              "sourceCharacterId": "galina"
+            }
+          ]
+        },
+        {
+          "id": "offer_sample_galina_aside",
+          "targetId": "galina",
+          "labelKey": "attention.sample.galina",
+          "gotoNodeId": "sample_attention_galina_direct",
+          "outcomes": [
+            {
+              "offerId": "offer_sample_television",
+              "outcome": "fragment",
+              "knowledgeId": "knowledge_sample_tv_signal",
+              "sourceEventId": "event_sample_attention"
+            },
+            {
+              "offerId": "offer_sample_arkady_rewrite",
+              "outcome": "missed",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "sourceCharacterId": "arkady"
+            },
+            {
+              "offerId": "offer_sample_galina_aside",
+              "outcome": "direct",
+              "knowledgeId": "knowledge_galina_aside",
+              "sourceCharacterId": "galina"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interactionObjects": [
+    {
+      "id": "prop_galina_stock_notebook",
+      "labelKey": "objects.stock_notebook",
+      "initialState": "closed",
+      "states": ["closed", "open"]
+    },
+    {
+      "id": "prop_gennady_glass",
+      "labelKey": "objects.gennady_glass",
+      "initialState": "stable",
+      "states": ["stable", "cleared", "overturned"]
+    },
+    {
+      "id": "prop_gennady_factory_photo",
+      "labelKey": "objects.factory_photo",
+      "initialState": "covered",
+      "states": ["covered", "face_up", "face_down"]
+    },
+    {
+      "id": "television",
+      "labelKey": "objects.television",
+      "initialState": "music_low",
+      "states": ["music_low", "signal_unstable", "signal_clear", "bulletin", "after_report"]
+    },
+    {
+      "id": "television_volume",
+      "labelKey": "objects.television_volume",
+      "initialState": "low",
+      "states": ["muted", "low", "normal"]
+    },
+    {
+      "id": "radio_music",
+      "labelKey": "objects.radio_music",
+      "initialState": "instrumental_low",
+      "states": ["instrumental_low", "lowered", "silent"]
+    },
+    {
+      "id": "prop_nikolai_tea",
+      "labelKey": "objects.nikolai_tea",
+      "initialState": "waiting",
+      "states": ["waiting", "served", "untouched"]
+    }
+  ],
+  "dialogueGraphs": [
+    {
+      "id": "graph_sample_room_rewrites",
+      "entryNodeId": "sample_galina_shift_terms",
+      "nodes": [
+        {
+          "id": "sample_galina_shift_terms",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.galina_shift_terms",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "prop_galina_stock_notebook",
+              "state": "open"
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_observe_room",
+              "textKey": "choices.sample.observe_room",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "read the room" },
+                { "type": "goto", "nodeId": "sample_sasha_reads_room" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_tasks",
+              "textKey": "choices.sample.ask_tasks",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "take the handoff" },
+                { "type": "goto", "nodeId": "sample_opening_maintenance" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_galina_tired",
+              "textKey": "choices.sample.ask_galina_tired",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "check on Galina" },
+                { "type": "goto", "nodeId": "sample_galina_tired_answer" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_sasha_reads_room",
+          "speakerId": null,
+          "textKey": "dialogue.sample.sasha_reads_room",
+          "requires": [],
+          "onEnter": [],
+          "choices": [
+            {
+              "id": "choice_sample_let_room_continue",
+              "textKey": "choices.sample.let_room_continue",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_opening_maintenance" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_opening_maintenance",
+          "speakerId": null,
+          "textKey": "dialogue.sample.opening_maintenance",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "television_volume",
+              "state": "low"
+            }
+          ],
+          "presentation": { "holdMs": 10000 },
+          "choices": [
+            {
+              "id": "choice_sample_observe_tv_reflection",
+              "textKey": "choices.sample.observe_tv_reflection",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "watch the low picture" },
+                {
+                  "type": "set-flag",
+                  "flagId": "opening_tv_reflection_observed",
+                  "value": true
+                },
+                { "type": "goto", "nodeId": "sample_opening_tv_reflection" }
+              ]
+            },
+            {
+              "id": "choice_sample_serve_opening_tea",
+              "textKey": "choices.sample.serve_opening_tea",
+              "kind": "serve",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "set tea beside Nikolai" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "prop_nikolai_tea",
+                  "state": "served"
+                },
+                {
+                  "type": "adjust-patron",
+                  "patronId": "nikolai",
+                  "metric": "agitation",
+                  "amount": -1
+                },
+                { "type": "goto", "nodeId": "sample_opening_tea_set" }
+              ]
+            },
+            {
+              "id": "choice_sample_tune_opening_picture",
+              "textKey": "choices.sample.tune_opening_picture",
+              "kind": "tune",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "steady the television picture" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "television",
+                  "state": "signal_clear"
+                },
+                {
+                  "type": "set-object-state",
+                  "objectId": "radio_music",
+                  "state": "lowered"
+                },
+                { "type": "goto", "nodeId": "sample_opening_signal_tuned" }
+              ]
+            },
+            {
+              "id": "choice_sample_wait_opening_phrase",
+              "textKey": "choices.sample.wait_opening_phrase",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "let the music phrase finish" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "radio_music",
+                  "state": "silent"
+                },
+                { "type": "set-flag", "flagId": "opening_music_heard", "value": true },
+                { "type": "goto", "nodeId": "sample_opening_music_finishes" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_lev_earlier_signal",
+              "textKey": "choices.sample.ask_lev_earlier_signal",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 2,
+                  "reason": "ask Lev about the earlier signal"
+                },
+                { "type": "goto", "nodeId": "sample_lev_earlier_signal" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_opening_tv_reflection",
+          "speakerId": null,
+          "textKey": "dialogue.sample.opening_tv_reflection",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "television",
+              "state": "signal_unstable"
+            }
+          ],
+          "presentation": { "holdMs": 14000 },
+          "choices": [
+            {
+              "id": "choice_sample_reflection_to_table",
+              "textKey": "choices.sample.reflection_to_table",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_workers_claim" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_opening_tea_set",
+          "speakerId": "nikolai",
+          "textKey": "dialogue.sample.opening_tea_set",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_tea_to_table",
+              "textKey": "choices.sample.tea_to_table",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_workers_claim" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_opening_signal_tuned",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.opening_signal_tuned",
+          "requires": [],
+          "onEnter": [
+            { "type": "adjust-patron", "patronId": "lev", "metric": "trust", "amount": 1 }
+          ],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_signal_to_table",
+              "textKey": "choices.sample.signal_to_table",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_workers_claim" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_opening_music_finishes",
+          "speakerId": null,
+          "textKey": "dialogue.sample.opening_music_finishes",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "television",
+              "state": "signal_unstable"
+            }
+          ],
+          "presentation": { "holdMs": 30000 },
+          "choices": [
+            {
+              "id": "choice_sample_music_to_table",
+              "textKey": "choices.sample.music_to_table",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_workers_claim" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_workers_claim",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_workers_claim",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "add-claim",
+              "claimId": "claim_gennady_workers_outlast_bosses",
+              "provenance": "direct",
+              "sourceCharacterId": "gennady"
+            }
+          ],
+          "presentation": { "holdMs": 10000 },
+          "choices": [
+            {
+              "id": "choice_sample_ask_apprentice",
+              "textKey": "choices.sample.ask_apprentice",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask for a concrete example" },
+                { "type": "goto", "nodeId": "sample_gennady_apprentice_example" }
+              ]
+            },
+            {
+              "id": "choice_sample_name_galina_labor",
+              "textKey": "choices.sample.name_galina_labor",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "challenge the category" },
+                { "type": "goto", "nodeId": "sample_sasha_names_galina_labor" }
+              ]
+            },
+            {
+              "id": "choice_sample_silence_gennady_public",
+              "textKey": "choices.sample.silence",
+              "kind": "silence",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "leave the claim unanswered" },
+                { "type": "goto", "nodeId": "sample_silence_galina_interrupts" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_nikolai_what_remains",
+              "textKey": "choices.sample.ask_nikolai_what_remains",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask Nikolai what remains" },
+                { "type": "goto", "nodeId": "sample_nikolai_what_remains" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_apprentice_example",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_apprentice_example",
+          "requires": [],
+          "onEnter": [
+            { "type": "adjust-patron", "patronId": "gennady", "metric": "trust", "amount": 1 }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_acknowledge_apprentices",
+              "textKey": "choices.sample.acknowledge_apprentices",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "acknowledge the work" },
+                { "type": "goto", "nodeId": "sample_nikolai_responsibility" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_sasha_names_galina_labor",
+          "speakerId": "sasha",
+          "textKey": "dialogue.sample.sasha_names_galina_labor",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "adjust-patron",
+              "patronId": "gennady",
+              "metric": "privatePressure",
+              "amount": 1
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_let_nikolai_answer",
+              "textKey": "choices.sample.let_nikolai_answer",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "let the table answer" },
+                { "type": "goto", "nodeId": "sample_nikolai_responsibility" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_silence_galina_interrupts",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.silence_galina_interrupts",
+          "requires": [],
+          "onEnter": [
+            { "type": "adjust-relationship", "fromId": "gennady", "toId": "galina", "amount": -1 },
+            {
+              "type": "adjust-patron",
+              "patronId": "gennady",
+              "metric": "privatePressure",
+              "amount": 1
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_give_galina_room",
+              "textKey": "choices.sample.give_galina_room",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "let Galina finish" },
+                { "type": "goto", "nodeId": "sample_nikolai_responsibility" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_nikolai_responsibility",
+          "speakerId": "nikolai",
+          "textKey": "dialogue.sample.nikolai_responsibility",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_turn_to_arkady",
+              "textKey": "choices.sample.turn_to_arkady",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "turn the question" },
+                { "type": "goto", "nodeId": "sample_arkady_emergency_claim" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_emergency_claim",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.arkady_emergency_claim",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "add-claim",
+              "claimId": "claim_arkady_emergency_may_be_necessary",
+              "provenance": "direct",
+              "sourceCharacterId": "arkady"
+            }
+          ],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_ask_authority",
+              "textKey": "choices.sample.ask_authority",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask who decides" },
+                { "type": "goto", "nodeId": "sample_arkady_procedural_answer" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_useful_act",
+              "textKey": "choices.sample.ask_useful_act",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask for one useful act" },
+                { "type": "goto", "nodeId": "sample_arkady_heating_example" }
+              ]
+            },
+            {
+              "id": "choice_sample_silence_arkady",
+              "textKey": "choices.sample.silence",
+              "kind": "silence",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "let Arkady qualify the claim" },
+                { "type": "goto", "nodeId": "sample_silence_arkady_qualifies" }
+              ]
+            },
+            {
+              "id": "choice_sample_name_coup_to_arkady",
+              "textKey": "choices.sample.name_coup_to_arkady",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask Arkady to name the event" },
+                { "type": "goto", "nodeId": "sample_arkady_avoids_name" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_procedural_answer",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.arkady_procedural_answer",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "adjust-patron",
+              "patronId": "arkady",
+              "metric": "privatePressure",
+              "amount": 1
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_look_to_lev",
+              "textKey": "choices.sample.look_to_lev",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "watch Lev react" },
+                { "type": "goto", "nodeId": "sample_lev_uncertainty_check" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_heating_example",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.arkady_heating_example",
+          "requires": [],
+          "onEnter": [
+            { "type": "adjust-patron", "patronId": "arkady", "metric": "trust", "amount": 1 }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_hold_both_accounts",
+              "textKey": "choices.sample.hold_both_accounts",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "hold the useful act beside the claim"
+                },
+                { "type": "goto", "nodeId": "sample_lev_uncertainty_check" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_silence_arkady_qualifies",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.silence_arkady_qualifies",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "adjust-patron",
+              "patronId": "arkady",
+              "metric": "publicCertainty",
+              "amount": -3
+            },
+            {
+              "type": "adjust-patron",
+              "patronId": "arkady",
+              "metric": "privatePressure",
+              "amount": 2
+            }
+          ],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_let_lev_test_it",
+              "textKey": "choices.sample.let_lev_test_it",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "let Lev test the wording" },
+                { "type": "goto", "nodeId": "sample_lev_uncertainty_check" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_lev_uncertainty_check",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.lev_uncertainty_check",
+          "requires": [],
+          "onEnter": [],
+          "choices": [
+            {
+              "id": "choice_sample_check_the_table",
+              "textKey": "choices.sample.check_the_table",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "return to the work" },
+                { "type": "goto", "nodeId": "sample_signal_service_interval" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_signal_service_interval",
+          "speakerId": null,
+          "textKey": "dialogue.sample.signal_service_interval",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "television",
+              "state": "signal_unstable"
+            }
+          ],
+          "presentation": { "holdMs": 10000 },
+          "choices": [
+            {
+              "id": "choice_sample_tune_signal_now",
+              "textKey": "choices.sample.tune_signal_now",
+              "kind": "tune",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "steady the signal" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "television",
+                  "state": "signal_clear"
+                },
+                {
+                  "type": "set-object-state",
+                  "objectId": "television_volume",
+                  "state": "normal"
+                },
+                { "type": "set-object-state", "objectId": "radio_music", "state": "lowered" },
+                { "type": "set-flag", "flagId": "signal_service_tuned", "value": true },
+                { "type": "goto", "nodeId": "sample_signal_tuned" }
+              ]
+            },
+            {
+              "id": "choice_sample_serve_nikolai_tea",
+              "textKey": "choices.sample.serve_nikolai_tea",
+              "kind": "serve",
+              "requires": [
+                {
+                  "type": "object-state",
+                  "objectId": "prop_nikolai_tea",
+                  "state": "waiting"
+                }
+              ],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "serve Nikolai tea" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "prop_nikolai_tea",
+                  "state": "served"
+                },
+                {
+                  "type": "adjust-patron",
+                  "patronId": "nikolai",
+                  "metric": "agitation",
+                  "amount": -2
+                },
+                { "type": "goto", "nodeId": "sample_signal_tea_served" }
+              ]
+            },
+            {
+              "id": "choice_sample_observe_lev_listening",
+              "textKey": "choices.sample.observe_lev_listening",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "watch Lev listen" },
+                { "type": "set-flag", "flagId": "lev_signal_observed", "value": true },
+                {
+                  "type": "adjust-patron",
+                  "patronId": "lev",
+                  "metric": "privatePressure",
+                  "amount": 1
+                },
+                { "type": "goto", "nodeId": "sample_signal_lev_listening" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_lev_signal",
+              "textKey": "choices.sample.ask_lev_signal",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask Lev about the signal" },
+                { "type": "set-flag", "flagId": "lev_signal_asked", "value": true },
+                { "type": "adjust-patron", "patronId": "lev", "metric": "trust", "amount": 1 },
+                { "type": "goto", "nodeId": "sample_signal_lev_listening" }
+              ]
+            },
+            {
+              "id": "choice_sample_wait_signal_phrase",
+              "textKey": "choices.sample.wait_signal_phrase",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "listen to the phrase end" },
+                { "type": "set-object-state", "objectId": "radio_music", "state": "silent" },
+                { "type": "set-flag", "flagId": "signal_phrase_heard", "value": true },
+                { "type": "goto", "nodeId": "sample_signal_phrase_ends" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_nikolai_about_tea",
+              "textKey": "choices.sample.ask_nikolai_about_tea",
+              "kind": "speak",
+              "requires": [
+                {
+                  "type": "object-state",
+                  "objectId": "prop_nikolai_tea",
+                  "state": "served"
+                }
+              ],
+              "effects": [
+                { "type": "advance-time", "minutes": 2, "reason": "ask Nikolai about the tea" },
+                { "type": "goto", "nodeId": "sample_nikolai_tea_answer" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_signal_tuned",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.signal_tuned",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_tuned_to_glass",
+              "textKey": "choices.sample.tuned_to_glass",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_galina_unstable_glass" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_signal_tea_served",
+          "speakerId": "nikolai",
+          "textKey": "dialogue.sample.signal_tea_served",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_tea_to_glass",
+              "textKey": "choices.sample.tea_to_glass",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_galina_unstable_glass" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_signal_lev_listening",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.signal_lev_listening",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_lev_to_glass",
+              "textKey": "choices.sample.lev_to_glass",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_galina_unstable_glass" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_signal_phrase_ends",
+          "speakerId": null,
+          "textKey": "dialogue.sample.signal_phrase_ends",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 30000 },
+          "choices": [
+            {
+              "id": "choice_sample_phrase_to_glass",
+              "textKey": "choices.sample.phrase_to_glass",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_galina_unstable_glass" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_galina_unstable_glass",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.galina_unstable_glass",
+          "requires": [],
+          "onEnter": [],
+          "choices": [
+            {
+              "id": "choice_sample_clear_glass",
+              "textKey": "choices.sample.clear_glass",
+              "kind": "serve",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "clear the glass" },
+                { "type": "goto", "nodeId": "sample_glass_cleared" }
+              ]
+            },
+            {
+              "id": "choice_sample_listen_longer",
+              "textKey": "choices.sample.listen_longer",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "listen before clearing" },
+                { "type": "goto", "nodeId": "sample_glass_overturned" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_glass_cleared",
+          "speakerId": null,
+          "textKey": "dialogue.sample.glass_cleared",
+          "requires": [],
+          "onEnter": [
+            { "type": "set-object-state", "objectId": "prop_gennady_glass", "state": "cleared" }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_observe_photo_after_clear",
+              "textKey": "choices.sample.observe_photo",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_photo_exposed" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_glass_overturned",
+          "speakerId": null,
+          "textKey": "dialogue.sample.glass_overturned",
+          "requires": [],
+          "onEnter": [
+            { "type": "set-object-state", "objectId": "prop_gennady_glass", "state": "overturned" }
+          ],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_observe_photo_after_spill",
+              "textKey": "choices.sample.observe_photo",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_photo_exposed" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_photo_exposed",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_photo_exposed",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "prop_gennady_factory_photo",
+              "state": "face_up"
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_ask_about_apprentices",
+              "textKey": "choices.sample.ask_about_apprentices",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "ask about the people in the photograph"
+                },
+                { "type": "goto", "nodeId": "sample_gennady_concrete_pride" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_why_photo_moved",
+              "textKey": "choices.sample.ask_why_photo_moved",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "ask why the photograph moved" },
+                { "type": "goto", "nodeId": "sample_gennady_accident_approach" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_gennady_in_photo",
+              "textKey": "choices.sample.ask_gennady_in_photo",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "ask where Gennady stands in the photograph"
+                },
+                { "type": "goto", "nodeId": "sample_gennady_in_photo" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_concrete_pride",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_concrete_pride",
+          "requires": [],
+          "onEnter": [
+            { "type": "adjust-patron", "patronId": "gennady", "metric": "trust", "amount": 1 }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_follow_photo_pause",
+              "textKey": "choices.sample.follow_photo_pause",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_accident_approach" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_accident_approach",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_accident_approach",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_ask_gennady_role",
+              "textKey": "choices.sample.ask_gennady_role",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "ask for Gennady's role" },
+                { "type": "goto", "nodeId": "sample_gennady_deflects_role" }
+              ]
+            },
+            {
+              "id": "choice_sample_return_photo",
+              "textKey": "choices.sample.return_photo",
+              "kind": "serve",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "return the photograph" },
+                { "type": "goto", "nodeId": "sample_gennady_photo_returned" }
+              ]
+            },
+            {
+              "id": "choice_sample_silence_gennady_private",
+              "textKey": "choices.sample.silence",
+              "kind": "silence",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "let Gennady continue" },
+                { "type": "goto", "nodeId": "sample_silence_gennady_continues" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_deflects_role",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_deflects_role",
+          "requires": [],
+          "onEnter": [
+            { "type": "set-flag", "flagId": "gennady_private_claim_unknown", "value": true }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_leave_deflection",
+              "textKey": "choices.sample.leave_deflection",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "leave the answer where it is" },
+                { "type": "set-object-state", "objectId": "television", "state": "bulletin" },
+                { "type": "set-object-state", "objectId": "radio_music", "state": "silent" },
+                {
+                  "type": "set-event-status",
+                  "eventId": "event_sample_attention",
+                  "status": "announced"
+                },
+                { "type": "open-attention", "windowId": "attention_sample_three_way" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_silence_gennady_continues",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.silence_gennady_continues",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "add-claim",
+              "claimId": "claim_gennady_concealed_shop_accident",
+              "provenance": "direct",
+              "sourceCharacterId": "gennady"
+            },
+            {
+              "type": "add-knowledge",
+              "knowledgeId": "knowledge_gennady_private_claim",
+              "provenance": "direct",
+              "sourceCharacterId": "gennady"
+            },
+            {
+              "type": "adjust-patron",
+              "patronId": "gennady",
+              "metric": "privatePressure",
+              "amount": -3
+            }
+          ],
+          "presentation": { "holdMs": 45000 },
+          "choices": [
+            {
+              "id": "choice_sample_hold_private_claim",
+              "textKey": "choices.sample.hold_private_claim",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "hold the private account" },
+                { "type": "set-object-state", "objectId": "television", "state": "bulletin" },
+                { "type": "set-object-state", "objectId": "radio_music", "state": "silent" },
+                {
+                  "type": "set-event-status",
+                  "eventId": "event_sample_attention",
+                  "status": "announced"
+                },
+                { "type": "open-attention", "windowId": "attention_sample_three_way" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_photo_returned",
+          "speakerId": null,
+          "textKey": "dialogue.sample.gennady_photo_returned",
+          "requires": [],
+          "onEnter": [
+            { "type": "set-flag", "flagId": "gennady_private_claim_unknown", "value": true }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_return_to_room",
+              "textKey": "choices.sample.return_to_room",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "return to the room" },
+                { "type": "set-object-state", "objectId": "television", "state": "bulletin" },
+                { "type": "set-object-state", "objectId": "radio_music", "state": "silent" },
+                {
+                  "type": "set-event-status",
+                  "eventId": "event_sample_attention",
+                  "status": "announced"
+                },
+                { "type": "open-attention", "windowId": "attention_sample_three_way" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_attention_tv_direct",
+          "speakerId": null,
+          "textKey": "dialogue.sample.attention_tv_direct",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_sample_tv_signal",
+              "levels": ["direct"]
+            }
+          ],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_turn_from_tv",
+              "textKey": "choices.sample.turn_from_tv",
+              "kind": "tune",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "turn back to the table" },
+                { "type": "set-flag", "flagId": "attention_route_tv", "value": true },
+                { "type": "goto", "nodeId": "sample_post_report_quiet" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_attention_arkady_direct",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.attention_arkady_direct",
+          "requires": [
+            { "type": "knowledge", "knowledgeId": "knowledge_arkady_rewrite", "levels": ["direct"] }
+          ],
+          "onEnter": [],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_answer_directly",
+              "textKey": "choices.sample.answer_directly",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "answer the rewrite" },
+                { "type": "set-flag", "flagId": "attention_route_arkady", "value": true },
+                { "type": "goto", "nodeId": "sample_post_report_quiet" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_attention_galina_direct",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.attention_galina_direct",
+          "requires": [
+            { "type": "knowledge", "knowledgeId": "knowledge_galina_aside", "levels": ["direct"] }
+          ],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_ask_lev_what_changed",
+              "textKey": "choices.sample.ask_lev_what_changed",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "ask Lev for the missed exchange"
+                },
+                { "type": "set-flag", "flagId": "attention_route_galina", "value": true },
+                { "type": "goto", "nodeId": "sample_post_report_quiet" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_post_report_quiet",
+          "speakerId": null,
+          "textKey": "dialogue.sample.post_report_quiet",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "set-object-state",
+              "objectId": "television",
+              "state": "after_report"
+            },
+            { "type": "set-object-state", "objectId": "radio_music", "state": "silent" }
+          ],
+          "presentation": { "holdMs": 10000 },
+          "choices": [
+            {
+              "id": "choice_sample_observe_after_report",
+              "textKey": "choices.sample.observe_after_report",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "watch the room after the report"
+                },
+                { "type": "set-flag", "flagId": "post_report_faces_observed", "value": true },
+                {
+                  "type": "adjust-patron",
+                  "patronId": "arkady",
+                  "metric": "publicCertainty",
+                  "amount": -1
+                },
+                { "type": "goto", "nodeId": "sample_post_report_resolves" }
+              ]
+            },
+            {
+              "id": "choice_sample_serve_after_report",
+              "textKey": "choices.sample.serve_after_report",
+              "kind": "serve",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "wipe the wet ring" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "prop_gennady_glass",
+                  "state": "cleared"
+                },
+                {
+                  "type": "adjust-relationship",
+                  "fromId": "galina",
+                  "toId": "sasha",
+                  "amount": 1
+                },
+                { "type": "goto", "nodeId": "sample_post_report_resolves" }
+              ]
+            },
+            {
+              "id": "choice_sample_tune_after_report",
+              "textKey": "choices.sample.tune_after_report",
+              "kind": "tune",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "lower the television" },
+                {
+                  "type": "set-object-state",
+                  "objectId": "television_volume",
+                  "state": "low"
+                },
+                { "type": "set-flag", "flagId": "post_report_volume_lowered", "value": true },
+                { "type": "goto", "nodeId": "sample_post_report_resolves" }
+              ]
+            },
+            {
+              "id": "choice_sample_wait_after_report",
+              "textKey": "choices.sample.wait_after_report",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "leave the quiet unfilled" },
+                { "type": "set-flag", "flagId": "post_report_quiet_waited", "value": true },
+                { "type": "goto", "nodeId": "sample_post_report_resolves" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_galina_believed_arkady",
+              "textKey": "choices.sample.ask_galina_believed_arkady",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "ask Galina about Arkady's account"
+                },
+                { "type": "goto", "nodeId": "sample_galina_believed_arkady" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_post_report_resolves",
+          "speakerId": null,
+          "textKey": "dialogue.sample.post_report_resolves",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 60000 },
+          "choices": [
+            {
+              "id": "choice_sample_resume_tv_route",
+              "textKey": "choices.sample.resume_tv_route",
+              "kind": "wait",
+              "requires": [{ "type": "flag", "flagId": "attention_route_tv", "value": true }],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_fragment_wording" }]
+            },
+            {
+              "id": "choice_sample_resume_arkady_route",
+              "textKey": "choices.sample.resume_arkady_route",
+              "kind": "speak",
+              "requires": [{ "type": "flag", "flagId": "attention_route_arkady", "value": true }],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_direct_wording" }]
+            },
+            {
+              "id": "choice_sample_resume_galina_route",
+              "textKey": "choices.sample.resume_galina_route",
+              "kind": "speak",
+              "requires": [{ "type": "flag", "flagId": "attention_route_galina", "value": true }],
+              "effects": [{ "type": "goto", "nodeId": "sample_lev_secondhand_recap" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_direct_wording",
+          "speakerId": "sasha",
+          "textKey": "dialogue.sample.arkady_direct_wording",
+          "requires": [
+            { "type": "knowledge", "knowledgeId": "knowledge_arkady_rewrite", "levels": ["direct"] }
+          ],
+          "onEnter": [
+            {
+              "type": "add-claim",
+              "claimId": "claim_arkady_opposed_from_start",
+              "provenance": "direct",
+              "sourceCharacterId": "arkady"
+            },
+            {
+              "type": "mark-contradiction",
+              "firstClaimId": "claim_arkady_emergency_may_be_necessary",
+              "secondClaimId": "claim_arkady_opposed_from_start"
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_let_arkady_answer_direct",
+              "textKey": "choices.sample.let_arkady_answer",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_contradiction_response" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_fragment_wording",
+          "speakerId": "sasha",
+          "textKey": "dialogue.sample.arkady_fragment_wording",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["fragment"]
+            }
+          ],
+          "onEnter": [
+            {
+              "type": "add-claim",
+              "claimId": "claim_arkady_opposed_from_start",
+              "provenance": "fragment",
+              "sourceCharacterId": "arkady"
+            },
+            {
+              "type": "mark-contradiction",
+              "firstClaimId": "claim_arkady_emergency_may_be_necessary",
+              "secondClaimId": "claim_arkady_opposed_from_start"
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_let_arkady_answer_fragment",
+              "textKey": "choices.sample.let_arkady_answer",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_contradiction_response" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_lev_secondhand_recap",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.lev_secondhand_recap",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "add-knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "provenance": "secondhand",
+              "sourceCharacterId": "lev"
+            },
+            {
+              "type": "add-claim",
+              "claimId": "claim_arkady_opposed_from_start",
+              "provenance": "secondhand",
+              "sourceCharacterId": "lev"
+            },
+            {
+              "type": "mark-contradiction",
+              "firstClaimId": "claim_arkady_emergency_may_be_necessary",
+              "secondClaimId": "claim_arkady_opposed_from_start"
+            }
+          ],
+          "choices": [
+            {
+              "id": "choice_sample_use_secondhand_wording",
+              "textKey": "choices.sample.use_secondhand_wording",
+              "kind": "speak",
+              "requires": [
+                {
+                  "type": "knowledge",
+                  "knowledgeId": "knowledge_arkady_rewrite",
+                  "levels": ["secondhand"]
+                }
+              ],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_secondhand_wording" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_secondhand_wording",
+          "speakerId": "sasha",
+          "textKey": "dialogue.sample.arkady_secondhand_wording",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["secondhand"]
+            }
+          ],
+          "onEnter": [],
+          "choices": [
+            {
+              "id": "choice_sample_let_arkady_answer_secondhand",
+              "textKey": "choices.sample.let_arkady_answer",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_arkady_contradiction_response" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_contradiction_response",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.arkady_contradiction_response",
+          "requires": [],
+          "onEnter": [
+            {
+              "type": "adjust-patron",
+              "patronId": "arkady",
+              "metric": "publicCertainty",
+              "amount": -4
+            },
+            {
+              "type": "adjust-patron",
+              "patronId": "arkady",
+              "metric": "privatePressure",
+              "amount": 3
+            }
+          ],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_return_to_gennady",
+              "textKey": "choices.sample.return_to_gennady",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_private_claim_decision" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_private_claim_decision",
+          "speakerId": null,
+          "textKey": "dialogue.sample.private_claim_decision",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 10000 },
+          "choices": [
+            {
+              "id": "choice_sample_repeat_private_claim",
+              "textKey": "choices.sample.repeat_private_claim",
+              "kind": "speak",
+              "requires": [
+                { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+              ],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_claim_repeated" }]
+            },
+            {
+              "id": "choice_sample_keep_private_claim",
+              "textKey": "choices.sample.keep_private_claim",
+              "kind": "silence",
+              "requires": [
+                { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+              ],
+              "effects": [
+                { "type": "set-flag", "flagId": "gennady_private_claim_preserved", "value": true },
+                { "type": "goto", "nodeId": "sample_gennady_claim_preserved" }
+              ]
+            },
+            {
+              "id": "choice_sample_close_without_private_claim",
+              "textKey": "choices.sample.close_without_private_claim",
+              "kind": "wait",
+              "requires": [
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "claim-known",
+                    "claimId": "claim_gennady_concealed_shop_accident"
+                  }
+                }
+              ],
+              "effects": [
+                { "type": "set-flag", "flagId": "gennady_private_claim_unknown", "value": true },
+                { "type": "goto", "nodeId": "sample_gennady_claim_preserved" }
+              ]
+            },
+            {
+              "id": "choice_sample_ask_gennady_what_he_wants",
+              "textKey": "choices.sample.ask_gennady_what_he_wants",
+              "kind": "speak",
+              "requires": [
+                { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+              ],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_what_he_wants" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_galina_tired_answer",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.galina_tired_answer",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_leave_galina_to_work",
+              "textKey": "choices.sample.leave_galina_to_work",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_opening_maintenance" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_lev_earlier_signal",
+          "speakerId": "lev",
+          "textKey": "dialogue.sample.lev_earlier_signal",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_let_lev_listen",
+              "textKey": "choices.sample.let_lev_listen",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_workers_claim" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_nikolai_what_remains",
+          "speakerId": "nikolai",
+          "textKey": "dialogue.sample.nikolai_what_remains",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_ask_nikolai_responsibility",
+              "textKey": "choices.sample.ask_nikolai_responsibility",
+              "kind": "speak",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "ask Nikolai about responsibility"
+                },
+                { "type": "goto", "nodeId": "sample_nikolai_responsibility" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_arkady_avoids_name",
+          "speakerId": "arkady",
+          "textKey": "dialogue.sample.arkady_avoids_name",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_watch_lev_at_coup_word",
+              "textKey": "choices.sample.watch_lev_at_coup_word",
+              "kind": "observe",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "watch Lev hear the word" },
+                { "type": "goto", "nodeId": "sample_lev_uncertainty_check" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_nikolai_tea_answer",
+          "speakerId": "nikolai",
+          "textKey": "dialogue.sample.nikolai_tea_answer",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 15000 },
+          "choices": [
+            {
+              "id": "choice_sample_leave_nikolai_with_tea",
+              "textKey": "choices.sample.leave_nikolai_with_tea",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_galina_unstable_glass" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_in_photo",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_in_photo",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_watch_gennady_cover_photo",
+              "textKey": "choices.sample.watch_gennady_cover_photo",
+              "kind": "observe",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_accident_approach" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_galina_believed_arkady",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.galina_believed_arkady",
+          "requires": [],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_leave_galina_answer_there",
+              "textKey": "choices.sample.leave_galina_answer_there",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_post_report_resolves" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_what_he_wants",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_what_he_wants",
+          "requires": [
+            { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+          ],
+          "onEnter": [],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_repeat_after_asking_gennady",
+              "textKey": "choices.sample.repeat_after_asking_gennady",
+              "kind": "speak",
+              "requires": [],
+              "effects": [{ "type": "goto", "nodeId": "sample_gennady_claim_repeated" }]
+            },
+            {
+              "id": "choice_sample_keep_after_asking_gennady",
+              "textKey": "choices.sample.keep_after_asking_gennady",
+              "kind": "silence",
+              "requires": [],
+              "effects": [
+                { "type": "set-flag", "flagId": "gennady_private_claim_preserved", "value": true },
+                { "type": "goto", "nodeId": "sample_gennady_claim_preserved" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_claim_repeated",
+          "speakerId": "gennady",
+          "textKey": "dialogue.sample.gennady_claim_repeated",
+          "requires": [
+            { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+          ],
+          "onEnter": [
+            { "type": "set-flag", "flagId": "gennady_private_claim_repeated", "value": true },
+            { "type": "adjust-patron", "patronId": "gennady", "metric": "trust", "amount": -4 },
+            { "type": "adjust-patron", "patronId": "gennady", "metric": "agitation", "amount": 4 },
+            { "type": "adjust-relationship", "fromId": "gennady", "toId": "sasha", "amount": -3 },
+            {
+              "type": "set-object-state",
+              "objectId": "prop_gennady_factory_photo",
+              "state": "face_down"
+            },
+            { "type": "append-epilogue-fact", "factId": "fact_private_claim_repeated" }
+          ],
+          "presentation": { "holdMs": 12000 },
+          "choices": [
+            {
+              "id": "choice_sample_let_public_room_settle",
+              "textKey": "choices.sample.let_room_settle",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                {
+                  "type": "advance-time",
+                  "minutes": 1,
+                  "reason": "let the room absorb the repetition"
+                },
+                { "type": "goto", "nodeId": "sample_summary_public_rupture_node" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_gennady_claim_preserved",
+          "speakerId": "galina",
+          "textKey": "dialogue.sample.gennady_claim_preserved",
+          "requires": [
+            { "type": "flag", "flagId": "gennady_private_claim_repeated", "value": false }
+          ],
+          "onEnter": [
+            { "type": "append-epilogue-fact", "factId": "fact_private_claim_not_repeated" }
+          ],
+          "presentation": { "holdMs": 18000 },
+          "choices": [
+            {
+              "id": "choice_sample_finish_private_record",
+              "textKey": "choices.sample.finish_private_record",
+              "kind": "wait",
+              "requires": [],
+              "effects": [
+                { "type": "advance-time", "minutes": 1, "reason": "close the sample scene" },
+                { "type": "goto", "nodeId": "sample_summary_private_record_node" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sample_summary_public_rupture_node",
+          "speakerId": null,
+          "textKey": "dialogue.sample.summary_public_rupture",
+          "requires": [
+            { "type": "flag", "flagId": "gennady_private_claim_repeated", "value": true }
+          ],
+          "onEnter": [{ "type": "set-summary", "summaryId": "summary_sample_public_rupture" }],
+          "choices": [
+            {
+              "id": "choice_sample_complete_public_rupture",
+              "textKey": "choices.sample.complete",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "complete" }]
+            }
+          ]
+        },
+        {
+          "id": "sample_summary_private_record_node",
+          "speakerId": null,
+          "textKey": "dialogue.sample.summary_private_record",
+          "requires": [
+            { "type": "flag", "flagId": "gennady_private_claim_repeated", "value": false }
+          ],
+          "onEnter": [{ "type": "set-summary", "summaryId": "summary_sample_private_record" }],
+          "choices": [
+            {
+              "id": "choice_sample_complete_private_record",
+              "textKey": "choices.sample.complete",
+              "kind": "wait",
+              "requires": [],
+              "effects": [{ "type": "complete" }]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "epilogueSummaries": [
+    {
+      "id": "summary_sample_public_rupture",
+      "titleKey": "summaries.sample.public_rupture.title",
+      "requires": [{ "type": "flag", "flagId": "gennady_private_claim_repeated", "value": true }],
+      "lines": [
+        { "textKey": "summaries.sample.public_rupture.photo", "requires": [] },
+        {
+          "textKey": "summaries.sample.arkady.direct",
+          "requires": [
+            { "type": "knowledge", "knowledgeId": "knowledge_arkady_rewrite", "levels": ["direct"] }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.arkady.fragment",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["fragment"]
+            }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.arkady.secondhand",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["secondhand"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "summary_sample_private_record",
+      "titleKey": "summaries.sample.private_record.title",
+      "requires": [{ "type": "flag", "flagId": "gennady_private_claim_repeated", "value": false }],
+      "lines": [
+        {
+          "textKey": "summaries.sample.private_record.known",
+          "requires": [
+            { "type": "claim-known", "claimId": "claim_gennady_concealed_shop_accident" }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.private_record.unknown",
+          "requires": [
+            {
+              "type": "not",
+              "condition": {
+                "type": "claim-known",
+                "claimId": "claim_gennady_concealed_shop_accident"
+              }
+            }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.arkady.direct",
+          "requires": [
+            { "type": "knowledge", "knowledgeId": "knowledge_arkady_rewrite", "levels": ["direct"] }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.arkady.fragment",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["fragment"]
+            }
+          ]
+        },
+        {
+          "textKey": "summaries.sample.arkady.secondhand",
+          "requires": [
+            {
+              "type": "knowledge",
+              "knowledgeId": "knowledge_arkady_rewrite",
+              "levels": ["secondhand"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "locale": {
+    "id": "en",
+    "entries": [
+      { "key": "common.room", "text": "The room" },
+      { "key": "characters.sasha", "text": "Sasha" },
+      { "key": "characters.galina", "text": "Galina" },
+      { "key": "characters.arkady", "text": "Arkady" },
+      { "key": "characters.lev", "text": "Lev" },
+      { "key": "characters.nikolai", "text": "Nikolai" },
+      { "key": "characters.gennady", "text": "Gennady" },
+      { "key": "chapters.sample_room_rewrites", "text": "The Room Rewrites" },
+      {
+        "key": "attention.sample.prompt",
+        "text": "The television clears. Arkady lowers his voice. Galina signals from the counter."
+      },
+      { "key": "attention.sample.television", "text": "Follow the television" },
+      { "key": "attention.sample.arkady", "text": "Listen to Arkady" },
+      { "key": "attention.sample.galina", "text": "Go to Galina" },
+      { "key": "objects.stock_notebook", "text": "Galina's stock notebook" },
+      { "key": "objects.gennady_glass", "text": "Gennady's glass" },
+      { "key": "objects.factory_photo", "text": "Factory photograph" },
+      { "key": "objects.television", "text": "Television" },
+      { "key": "objects.television_volume", "text": "Television volume" },
+      { "key": "objects.radio_music", "text": "Receiver music" },
+      { "key": "objects.nikolai_tea", "text": "Nikolai's tea" },
+      {
+        "key": "dialogue.sample.galina_shift_terms",
+        "text": "Watch the tables. The room is ahead of its glasses again."
+      },
+      {
+        "key": "dialogue.sample.sasha_reads_room",
+        "text": "One glass leans near a photograph. Arkady has squared his papers. Lev is listening to the set."
+      },
+      {
+        "key": "dialogue.sample.opening_maintenance",
+        "text": "A thin instrumental phrase sits under the receiver hiss. The television picture rolls once."
+      },
+      {
+        "key": "dialogue.sample.opening_tv_reflection",
+        "text": "The picture moves across Lev's glasses. He listens before he looks."
+      },
+      {
+        "key": "dialogue.sample.opening_tea_set",
+        "text": "Tea. Good. Leave the bottle to argue with itself."
+      },
+      {
+        "key": "dialogue.sample.opening_signal_tuned",
+        "text": "Better. Do not mistake better for true."
+      },
+      {
+        "key": "dialogue.sample.opening_music_finishes",
+        "text": "The phrase ends. The receiver keeps breathing into the room."
+      },
+      {
+        "key": "dialogue.sample.gennady_workers_claim",
+        "text": "Bosses change chairs. People who make things remain."
+      },
+      {
+        "key": "dialogue.sample.gennady_apprentice_example",
+        "text": "I trained people who stopped needing my hand on the work."
+      },
+      {
+        "key": "dialogue.sample.sasha_names_galina_labor",
+        "text": "Galina has kept this room working. Does that count?"
+      },
+      {
+        "key": "dialogue.sample.silence_galina_interrupts",
+        "text": "You count the work after it is done. I count it before you notice."
+      },
+      {
+        "key": "dialogue.sample.nikolai_responsibility",
+        "text": "Work does not cancel responsibility. Neither does an order."
+      },
+      {
+        "key": "dialogue.sample.arkady_emergency_claim",
+        "text": "An emergency can require measures no one would choose in ordinary conditions."
+      },
+      {
+        "key": "dialogue.sample.arkady_procedural_answer",
+        "text": "Authority is not a chair occupied by one person. It is a chain of duties."
+      },
+      {
+        "key": "dialogue.sample.arkady_heating_example",
+        "text": "Once, the papers meant heat reached homes before the cold did."
+      },
+      {
+        "key": "dialogue.sample.silence_arkady_qualifies",
+        "text": "Necessity is not approval. Those are separate terms."
+      },
+      {
+        "key": "dialogue.sample.lev_uncertainty_check",
+        "text": "A clean signal can still carry a bad guess."
+      },
+      {
+        "key": "dialogue.sample.signal_service_interval",
+        "text": "The picture thins. Nikolai's tea waits. Gennady's glass shifts against its wet ring."
+      },
+      {
+        "key": "dialogue.sample.signal_tuned",
+        "text": "There. It may hold until someone needs certainty from it."
+      },
+      {
+        "key": "dialogue.sample.signal_tea_served",
+        "text": "Nikolai takes the tea with both hands and leaves the glass alone."
+      },
+      {
+        "key": "dialogue.sample.signal_lev_listening",
+        "text": "The sound changed before the picture. The set is receiving something new."
+      },
+      {
+        "key": "dialogue.sample.signal_phrase_ends",
+        "text": "The last note fades. A chair leg answers from the far table."
+      },
+      {
+        "key": "dialogue.sample.galina_unstable_glass",
+        "text": "That glass goes now, or it goes by itself."
+      },
+      {
+        "key": "dialogue.sample.glass_cleared",
+        "text": "You clear the glass. A factory photograph lies beneath its wet ring."
+      },
+      {
+        "key": "dialogue.sample.glass_overturned",
+        "text": "The glass tips. Galina catches the spill while Gennady saves the photograph."
+      },
+      {
+        "key": "dialogue.sample.gennady_photo_exposed",
+        "text": "They knew the work. Most of them learned it from me."
+      },
+      {
+        "key": "dialogue.sample.gennady_concrete_pride",
+        "text": "The good ones argued with me. Then they became better than me."
+      },
+      {
+        "key": "dialogue.sample.gennady_accident_approach",
+        "text": "A photograph keeps the shift tidy. The shift was not tidy."
+      },
+      {
+        "key": "dialogue.sample.gennady_deflects_role",
+        "text": "Reports belonged to the office. We kept the shop moving."
+      },
+      {
+        "key": "dialogue.sample.silence_gennady_continues",
+        "text": "I helped hide what happened. I still visit the man who paid for it."
+      },
+      {
+        "key": "dialogue.sample.gennady_photo_returned",
+        "text": "You return the photograph. Gennady covers it with his hand."
+      },
+      {
+        "key": "dialogue.sample.attention_tv_direct",
+        "text": "The signal clears long enough to hear an uncertain bulletin in full."
+      },
+      {
+        "key": "dialogue.sample.attention_arkady_direct",
+        "text": "I opposed this from the beginning. There was never any question."
+      },
+      {
+        "key": "dialogue.sample.attention_galina_direct",
+        "text": "He changes his account when the room changes. Listen for the order."
+      },
+      {
+        "key": "dialogue.sample.post_report_quiet",
+        "text": "The music is gone. The television stays on. For a moment, nobody helps the room move again."
+      },
+      {
+        "key": "dialogue.sample.post_report_resolves",
+        "text": "The receiver hum returns beneath the chairs. Arkady still has to answer."
+      },
+      {
+        "key": "dialogue.sample.arkady_direct_wording",
+        "text": "You said an emergency could require it. Now you say you opposed it from the start."
+      },
+      {
+        "key": "dialogue.sample.arkady_fragment_wording",
+        "text": "I heard you say something about opposing it from the start. What changed?"
+      },
+      {
+        "key": "dialogue.sample.lev_secondhand_recap",
+        "text": "While you were away, Arkady discovered he had always objected."
+      },
+      {
+        "key": "dialogue.sample.arkady_secondhand_wording",
+        "text": "Lev says your account changed. Did it?"
+      },
+      {
+        "key": "dialogue.sample.arkady_contradiction_response",
+        "text": "The circumstances changed. Precision should change with them."
+      },
+      {
+        "key": "dialogue.sample.private_claim_decision",
+        "text": "Gennady's photograph remains on the table."
+      },
+      {
+        "key": "dialogue.sample.galina_tired_answer",
+        "text": "Tired? I am working. Ask me again when that door is locked."
+      },
+      {
+        "key": "dialogue.sample.lev_earlier_signal",
+        "text": "Worse. Earlier they were pretending the rolling picture was deliberate."
+      },
+      {
+        "key": "dialogue.sample.nikolai_what_remains",
+        "text": "The man who carried out the order. He does not vanish with the paperwork."
+      },
+      {
+        "key": "dialogue.sample.arkady_avoids_name",
+        "text": "A serious constitutional irregularity. Sasha, shouting a shorter word will not improve it."
+      },
+      {
+        "key": "dialogue.sample.nikolai_tea_answer",
+        "text": "It gives my hands something harmless to do."
+      },
+      {
+        "key": "dialogue.sample.gennady_in_photo",
+        "text": "Second from the left. The idiot telling everyone not to lean on the machine."
+      },
+      {
+        "key": "dialogue.sample.galina_believed_arkady",
+        "text": "I believed he meant what he said at the time. That is not the same thing."
+      },
+      {
+        "key": "dialogue.sample.gennady_what_he_wants",
+        "text": "I wanted one person to know. I did not ask for a meeting."
+      },
+      {
+        "key": "dialogue.sample.gennady_claim_repeated",
+        "text": "That was said to you, not to this table."
+      },
+      {
+        "key": "dialogue.sample.gennady_claim_preserved",
+        "text": "Galina closes her notebook. She does not ask what was said."
+      },
+      {
+        "key": "dialogue.sample.summary_public_rupture",
+        "text": "The photograph is face-down. The room is still speaking."
+      },
+      {
+        "key": "dialogue.sample.summary_private_record",
+        "text": "The photograph stays face-up. Some parts of the room remain private."
+      },
+      { "key": "choices.sample.observe_room", "text": "Read the room first." },
+      { "key": "choices.sample.ask_tasks", "text": "What needs doing?" },
+      { "key": "choices.sample.ask_galina_tired", "text": "Have you slept at all?" },
+      { "key": "choices.sample.leave_galina_to_work", "text": "Let her work." },
+      { "key": "choices.sample.let_room_continue", "text": "Let the room continue." },
+      {
+        "key": "choices.sample.observe_tv_reflection",
+        "text": "Watch the picture move across Lev's glasses."
+      },
+      { "key": "choices.sample.serve_opening_tea", "text": "Set tea beside Nikolai." },
+      { "key": "choices.sample.tune_opening_picture", "text": "Steady the picture." },
+      { "key": "choices.sample.wait_opening_phrase", "text": "Let the phrase finish." },
+      {
+        "key": "choices.sample.ask_lev_earlier_signal",
+        "text": "Was the signal this bad earlier?"
+      },
+      { "key": "choices.sample.let_lev_listen", "text": "Leave him to listen." },
+      { "key": "choices.sample.reflection_to_table", "text": "Look back to the tables." },
+      { "key": "choices.sample.tea_to_table", "text": "Leave Nikolai with the tea." },
+      { "key": "choices.sample.signal_to_table", "text": "Leave the set to Lev." },
+      { "key": "choices.sample.music_to_table", "text": "Listen to the room return." },
+      { "key": "choices.sample.ask_apprentice", "text": "Name someone you taught." },
+      { "key": "choices.sample.name_galina_labor", "text": "Does Galina's work count?" },
+      {
+        "key": "choices.sample.ask_nikolai_what_remains",
+        "text": "What remains when the orders change?"
+      },
+      {
+        "key": "choices.sample.ask_nikolai_responsibility",
+        "text": "Does that include the officer?"
+      },
+      { "key": "choices.sample.silence", "text": "[Say nothing.]" },
+      { "key": "choices.sample.acknowledge_apprentices", "text": "They became better than you?" },
+      { "key": "choices.sample.let_nikolai_answer", "text": "Let Nikolai answer." },
+      { "key": "choices.sample.give_galina_room", "text": "Give Galina the room." },
+      {
+        "key": "choices.sample.turn_to_arkady",
+        "text": "And what does responsibility mean to you?"
+      },
+      { "key": "choices.sample.ask_authority", "text": "Who decides what is necessary?" },
+      { "key": "choices.sample.ask_useful_act", "text": "Name one thing the system got done." },
+      { "key": "choices.sample.name_coup_to_arkady", "text": "Call it a coup." },
+      {
+        "key": "choices.sample.watch_lev_at_coup_word",
+        "text": "Watch Lev hear the word."
+      },
+      { "key": "choices.sample.look_to_lev", "text": "Watch Lev's reaction." },
+      { "key": "choices.sample.hold_both_accounts", "text": "Keep both facts in mind." },
+      { "key": "choices.sample.let_lev_test_it", "text": "Let Lev test the wording." },
+      { "key": "choices.sample.check_the_table", "text": "Check the table." },
+      { "key": "choices.sample.tune_signal_now", "text": "Steady the signal now." },
+      { "key": "choices.sample.serve_nikolai_tea", "text": "Bring Nikolai his tea." },
+      {
+        "key": "choices.sample.observe_lev_listening",
+        "text": "Watch Lev listen to the change."
+      },
+      { "key": "choices.sample.ask_lev_signal", "text": "What changed in the signal?" },
+      { "key": "choices.sample.wait_signal_phrase", "text": "Let the last note go." },
+      { "key": "choices.sample.ask_nikolai_about_tea", "text": "Is the tea helping?" },
+      { "key": "choices.sample.leave_nikolai_with_tea", "text": "Leave him with the tea." },
+      { "key": "choices.sample.tuned_to_glass", "text": "Return to the unstable glass." },
+      { "key": "choices.sample.tea_to_glass", "text": "Check the next table." },
+      { "key": "choices.sample.lev_to_glass", "text": "Leave Lev with the set." },
+      { "key": "choices.sample.phrase_to_glass", "text": "Look for the chair sound." },
+      { "key": "choices.sample.clear_glass", "text": "Clear the glass now." },
+      { "key": "choices.sample.listen_longer", "text": "Listen a moment longer." },
+      { "key": "choices.sample.observe_photo", "text": "Look at the photograph." },
+      { "key": "choices.sample.ask_about_apprentices", "text": "Who learned from you?" },
+      { "key": "choices.sample.ask_why_photo_moved", "text": "Why did you move the photograph?" },
+      { "key": "choices.sample.ask_gennady_in_photo", "text": "Which one is you?" },
+      {
+        "key": "choices.sample.watch_gennady_cover_photo",
+        "text": "Watch him cover the photograph."
+      },
+      { "key": "choices.sample.follow_photo_pause", "text": "Watch his hand on the photograph." },
+      { "key": "choices.sample.ask_gennady_role", "text": "What was your part in it?" },
+      { "key": "choices.sample.return_photo", "text": "Return the photograph." },
+      { "key": "choices.sample.leave_deflection", "text": "Leave the answer there." },
+      { "key": "choices.sample.hold_private_claim", "text": "Hold what he told you." },
+      { "key": "choices.sample.return_to_room", "text": "Return to the room." },
+      { "key": "choices.sample.turn_from_tv", "text": "Turn back to Arkady." },
+      { "key": "choices.sample.answer_directly", "text": "Repeat what he said." },
+      { "key": "choices.sample.ask_lev_what_changed", "text": "What did I miss?" },
+      {
+        "key": "choices.sample.observe_after_report",
+        "text": "Watch who looks away first."
+      },
+      { "key": "choices.sample.serve_after_report", "text": "Wipe the wet ring." },
+      { "key": "choices.sample.tune_after_report", "text": "Lower the television." },
+      { "key": "choices.sample.wait_after_report", "text": "Leave the quiet unfilled." },
+      {
+        "key": "choices.sample.ask_galina_believed_arkady",
+        "text": "Did you believe Arkady?"
+      },
+      {
+        "key": "choices.sample.leave_galina_answer_there",
+        "text": "Leave that answer where it is."
+      },
+      { "key": "choices.sample.resume_tv_route", "text": "Turn back to Arkady." },
+      { "key": "choices.sample.resume_arkady_route", "text": "Repeat his first wording." },
+      { "key": "choices.sample.resume_galina_route", "text": "Ask Lev for the missing words." },
+      { "key": "choices.sample.let_arkady_answer", "text": "Let Arkady answer." },
+      {
+        "key": "choices.sample.use_secondhand_wording",
+        "text": "Ask with Lev named as the source."
+      },
+      { "key": "choices.sample.return_to_gennady", "text": "Look back to Gennady's photograph." },
+      {
+        "key": "choices.sample.repeat_private_claim",
+        "text": "Tell the table what Gennady admitted."
+      },
+      { "key": "choices.sample.keep_private_claim", "text": "Keep it between you." },
+      {
+        "key": "choices.sample.ask_gennady_what_he_wants",
+        "text": "What do you want me to do with it?"
+      },
+      {
+        "key": "choices.sample.repeat_after_asking_gennady",
+        "text": "Tell the table anyway."
+      },
+      {
+        "key": "choices.sample.keep_after_asking_gennady",
+        "text": "Keep it with you."
+      },
+      {
+        "key": "choices.sample.close_without_private_claim",
+        "text": "Leave the photograph alone."
+      },
+      { "key": "choices.sample.let_room_settle", "text": "Let the room settle." },
+      { "key": "choices.sample.finish_private_record", "text": "Leave the notebook closed." },
+      { "key": "choices.sample.complete", "text": "Leave the room to its noise." },
+      { "key": "summaries.sample.public_rupture.title", "text": "A Public Break" },
+      {
+        "key": "summaries.sample.public_rupture.photo",
+        "text": "Gennady turned the factory photograph face-down after his private account was repeated."
+      },
+      { "key": "summaries.sample.private_record.title", "text": "A Private Record" },
+      {
+        "key": "summaries.sample.private_record.known",
+        "text": "You heard Gennady's account and did not give it to the room."
+      },
+      {
+        "key": "summaries.sample.private_record.unknown",
+        "text": "Whatever Gennady withheld remains outside your record."
+      },
+      {
+        "key": "summaries.sample.arkady.direct",
+        "text": "You heard both versions of Arkady's position directly."
+      },
+      {
+        "key": "summaries.sample.arkady.fragment",
+        "text": "You caught only part of Arkady's later version."
+      },
+      {
+        "key": "summaries.sample.arkady.secondhand",
+        "text": "Lev told you that Arkady had changed his account."
+      }
+    ]
+  }
+}

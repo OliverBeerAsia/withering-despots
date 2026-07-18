@@ -1,0 +1,9 @@
+{
+  "asset_id": "char_galina_silhouette_v001",
+  "status": "review",
+  "canonical_character": "galina",
+  "source_prompt": "art/source/char/galina.ts",
+  "frame": { "w": 48, "h": 96, "stride": 48 },
+  "frames": ["standing", "seated_listen"],
+  "review_notes": "Pure soot_0 silhouette pass (toSilhouette) of the standing and seated_listen frames, composited side by side for the cast six-silhouette check. Dominant feature: round high-bun head atop a solid, wide-shouldered rectangular torso block with visible folded-arm gaps at the sides — distinct from arkady's narrow vertical pencil-stroke silhouette (only other completed cast silhouette at time of authoring)."
+}

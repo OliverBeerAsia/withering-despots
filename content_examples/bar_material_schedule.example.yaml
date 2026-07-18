@@ -1,0 +1,108 @@
+room_id: cafe_bar_smena
+status: provisional_until_historical_review
+fictional_build_history:
+  opened: 1968
+  partial_refurbishment: 1982
+  note: Fictional production premise; not a claim about a real establishment.
+
+materials:
+  wall_upper:
+    description: dull_warm_cream_painted_plaster
+    value_range: light
+    gloss: matte
+    wear_logic:
+      - small_scuffs_at_shoulders_and_service_path
+      - localized_repaint_not_uniform_grime
+    historical_ledger_ids:
+      - MAT-WALL-001
+
+  wall_lower:
+    description: ribbed_or_flat_hardboard_paneling_subject_to_reference_confirmation
+    value_range: mid
+    gloss: low_satin
+    wear_logic:
+      - rubbed_edges_near_chairs
+      - one_repaired_panel
+    historical_ledger_ids:
+      - MAT-PANEL-001
+
+  floor:
+    description: brown_red_linoleum_or_terrazzo_final_choice_pending
+    value_range: dark_mid
+    gloss: worn_satin
+    wear_logic:
+      - service_path_more_polished
+      - chair_leg_scuffs
+      - no_random_cracks
+    historical_ledger_ids:
+      - MAT-FLOOR-001
+
+  counter:
+    description: varnished_birch_or_beech_veneer_with_darker_edge
+    value_range: mid
+    gloss: aged_satin
+    wear_logic:
+      - rubbed_customer_edge
+      - minor_water_marks_near_service_zone
+      - repaired_corner
+    historical_ledger_ids:
+      - MAT-COUNTER-001
+
+  seating:
+    frame: painted_or_chrome_plated_metal_pending_reference
+    upholstery: oxidized_teal_vinyl_or_textile_pending_reference
+    wear_logic:
+      - slight_compression_and_edge_wear
+      - one_mismatched_replacement_seat
+      - no_deep_rips_unless_story_relevant
+    historical_ledger_ids:
+      - FURN-CHAIR-001
+      - MAT-UPHOLSTERY-001
+
+  tabletops:
+    description: dark_wood_veneer_or_laminate_pending_reference
+    gloss: low_satin
+    wear_logic:
+      - glass_rings_and_small_edge_nicks
+      - coherent_ellipse_and_perspective
+    historical_ledger_ids:
+      - FURN-TABLE-001
+
+palette:
+  cream: "#C9BEA2"
+  honey_brown: "#8A633E"
+  tobacco_amber: "#9A6637"
+  oxidized_teal: "#4E7773"
+  dark_olive: "#4E5140"
+  brick_accent: "#7A4036"
+  graphite: "#343532"
+  crt_cyan_overlay: "#84A9AE"
+
+lighting:
+  patron_zone:
+    source: amber_pendant_or_wall_practicals
+    temperature_class: warm
+    shadow_softness: medium_soft
+  service_zone:
+    source: fluorescent_work_light
+    temperature_class: cool_neutral
+    shadow_softness: medium
+  exterior:
+    source: street_and_predawn_light
+    temperature_class: cool
+    active_when: door_open_or_dawn
+  television:
+    source: runtime_overlay_only
+    temperature_class: cyan_blue_variable
+    photosensitivity_rule: no_rapid_full_screen_flashes
+
+prohibited:
+  - exposed_filament_bulbs
+  - boutique_distressed_brick
+  - led_strips
+  - flat_screen_television
+  - contemporary_cocktail_stools
+  - post_soviet_branding
+  - wall_of_generic_propaganda_posters
+  - uniform_sepia_filter
+  - theatrical_dereliction
